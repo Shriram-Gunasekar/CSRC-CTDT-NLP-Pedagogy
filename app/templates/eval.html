@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Examination And Evaluation</title>
+    </head>
+    <body>
+        <h1> Evaluation </h1>
+        <h2> Upload The Answers And Select Answer Key </h2>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="theirevalfile">Upload your file</label>
+            <input type="file" id="theirevalfile" name="theirevalfile">
+            <button type="submit">Submit</button>
+            <div class="custom-select" style="width:800px">
+                <label for="answerkey">Select the answer key to be evaluated with</label>
+                <select name="answerkey" id="answerkey">
+                    <option value="1">File 1</option>
+                    <option value="2">File 2</option>
+                    <option value="3">File 3</option>
+                    <option value="4">File 4</option>
+                    <option value="5">File 5</option>
+                </select>
+            </div>
+         </form>
+    </body>
+</html>
