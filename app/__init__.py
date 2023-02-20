@@ -2,6 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 from .setup import config, blueprint, login_det, map
+import torch
+from sentence_transformers import util
 
 db = SQLAlchemy()
 
