@@ -1,6 +1,6 @@
 from . import db
 from .models import Account
-
+from . import qamodel
 from flask_login import login_required, current_user
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 
@@ -9,6 +9,7 @@ views = Blueprint('views', __name__, url_defaults=None, root_path=None ) #templa
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def dashboard():
+    qamodel1 = qamodel
     if request.method == 'POST':
         text = request.form.get('option')
         answer = "Your text has been summarized"
