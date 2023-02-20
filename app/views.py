@@ -19,15 +19,19 @@ def dashboard():
 @login_required
 def plagsim():
     if request.method == 'POST':
-        ortext = request.form.get('theirplagdata')
-        duptext = request.form.get('checkplagdata')
-        orfile = request.files['theirplagfile']
-        dupfile = request.files['checkplagfile']
-        print(orfile.read())
-        similarity = 'this is old'
+        orfile = request.form.get('theirplagfile')
+        dupfile = request.form.get('checkplagfile')
+        ortext = request.form.get('theirplagtext')
+        duptext = request.form.get('checkplagtext')
         if orfile and dupfile:
-            similarity = 'this is new'
-        return render_template('plagsim.html', user=current_user, similarity=similarity)
+            orfile = orfile.read()
+            dupfile = dupfile.read()
+            filescore = plagresult(orfile, dupfile)
+        elif ortext and duptext:
+            textscore = plagresult(ortext, duptext)
+        else:
+            score = "Please upload your text file or paste your text in the text box"
+        return render_template('plagsim.html', user=current_user, score=score)
     return render_template('plagsim.html', user=current_user)
 
 @views.route('/bertsum', methods=['GET','POST'])
@@ -52,8 +56,14 @@ def eval():
     return render_template('eval.html',user=current_user)
 
 
+def answer(args):
+    return args
 
+def plagresult(plagscore):
+    return plagscore
 
+def summarizer(summary):
+    return summary
 
 
 
