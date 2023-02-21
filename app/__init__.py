@@ -2,12 +2,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 from .setup import config, blueprint, login_det, map
-import torch
-from sentence_transformers import util
-qamodel = torch.load('QA')
-summarymodel = torch.load('Summarizer')
-semsimmodel = torch.load('Similarity')
-# trainer = torch.load('QGen')
+
+# qamodel = torch.load('QA')
+# summarymodel = torch.load('Summarizer')
+# semsimmodel = torch.load('Similarity')
 # grammar = torch.load('Grammar')
 
 db = SQLAlchemy()

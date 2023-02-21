@@ -1,5 +1,4 @@
 from app import constructor
-
 app = constructor()
 
 def main():
