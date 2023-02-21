@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 from .setup import config, blueprint, login_det, map
+import torch
 
 # qamodel = torch.load('QA')
 summarymodel = torch.load('Summarizer')

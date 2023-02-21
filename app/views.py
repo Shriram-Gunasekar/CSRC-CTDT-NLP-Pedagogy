@@ -37,14 +37,11 @@ def bertsum():
     if request.method == 'POST':
         theirsumtext = request.form.get('theirsumtext')
         textsentences = request.form.get('textsentences')
-        theirsumfile = request['theirsumfile']
-        filesentences = request.form.get('filesentences')
         if theirsumtext:
-            textsummary = summarizer(theirsumtext,num_sentences=textsentences)
-        if theirsumfile:
-            filesummary = summarizer(theirsumfile.read(),num_sentences=filesentences)
-        print(type(theirsumfile.read()))
-        return render_template('bertsum.html', user=current_user,textsummary=textsummary,filesummary=filesummary)
+            textsummary = summarizer(theirsumtext,sentences=textsentences)
+        else:
+            textsummary = "Please Enter Valid Input"
+        return render_template('bertsum.html', user=current_user,textsummary=textsummary)
     return render_template('bertsum.html',user=current_user)
 
 @views.route('/qa')
@@ -65,5 +62,5 @@ def plagresult(plagscore):
     return plagscore
 
 def summarizer(data,sentences):
-    answer = summarymodel(data, num_sentences=sentences, min_length=5)
+    answer = summarymodel(data, num_sentences=int(sentences), min_length=5)
     return answer
