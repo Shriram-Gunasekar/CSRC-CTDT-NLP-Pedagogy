@@ -10,6 +10,8 @@
             <form method="POST">
                 <label for="theirsumtext">Enter Your Data</label>
                 <input type="text" id="theirsumtext" name="theirsumtext" placeholder="Enter your text">
+                <label for="sentences">Enter Number of Sentences</label>
+                <input type="text" id="textsentences" name="textsentences" placeholder="Enter number of sentences">
                 <button type="submit">Submit</button>
             </form>
         </div>
@@ -17,8 +19,15 @@
             <form method="POST" enctype="multipart/form-data">
                 <label for="theirsumfile">Upload Your File</label>
                 <input type="file" id="theirsumfile" name="theirsumfile">
+                <label for="sentences">Enter Number of Sentences</label>
+                <input type="text" id="filesentences" name="filesentences" placeholder="Enter number of sentences">
                 <button type="submit">Submit</button>
             </form>
         </div>
+        <h1>Your Results Will Display Below Here</h1>
+        <h4> Your Summary : Text </h4>
+        <p> {{ textsummary }} </p>
+        <h4> Your Summary : File </h4>
+        <p> {{ filesummary }} </p>
     </body>
 </html>

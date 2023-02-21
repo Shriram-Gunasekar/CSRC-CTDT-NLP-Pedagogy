@@ -4,7 +4,7 @@ import os
 from .setup import config, blueprint, login_det, map
 
 # qamodel = torch.load('QA')
-# summarymodel = torch.load('Summarizer')
+summarymodel = torch.load('Summarizer')
 # semsimmodel = torch.load('Similarity')
 # grammar = torch.load('Grammar')
 

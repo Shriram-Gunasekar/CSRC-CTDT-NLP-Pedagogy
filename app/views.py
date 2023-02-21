@@ -1,6 +1,7 @@
 from . import db
 from .models import Account
-from . import qamodel
+#from . import qamodel
+from . import summarymodel
 from flask_login import login_required, current_user
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 
@@ -9,11 +10,6 @@ views = Blueprint('views', __name__, url_defaults=None, root_path=None ) #templa
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    qamodel1 = qamodel
-    if request.method == 'POST':
-        text = request.form.get('option')
-        answer = "Your text has been summarized"
-        return render_template('dashboard.html', user=current_user, answer=answer)
     return render_template('dashboard.html', user=current_user)
 
 @views.route('/plagsim', methods=['GET','POST'])
@@ -40,10 +36,15 @@ def plagsim():
 def bertsum():
     if request.method == 'POST':
         theirsumtext = request.form.get('theirsumtext')
-        theirsumfile = request.files['theirsumfile']
-        print(theirsumfile.read())
-        summary = 'this is the summary'
-        return render_template('bertsum.html', user=current_user, summary=summary)
+        textsentences = request.form.get('textsentences')
+        theirsumfile = request['theirsumfile']
+        filesentences = request.form.get('filesentences')
+        if theirsumtext:
+            textsummary = summarizer(theirsumtext,num_sentences=textsentences)
+        if theirsumfile:
+            filesummary = summarizer(theirsumfile.read(),num_sentences=filesentences)
+        print(type(theirsumfile.read()))
+        return render_template('bertsum.html', user=current_user,textsummary=textsummary,filesummary=filesummary)
     return render_template('bertsum.html',user=current_user)
 
 @views.route('/qa')
@@ -57,107 +58,12 @@ def eval():
     return render_template('eval.html',user=current_user)
 
 
-def answer(args):
-    return args
+def answer(type, question, context):
+    pass
 
 def plagresult(plagscore):
     return plagscore
 
-def summarizer(summary):
-    return summary
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
+def summarizer(data,sentences):
+    answer = summarymodel(data, num_sentences=sentences, min_length=5)
+    return answer
