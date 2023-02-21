@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Machining </title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1> Machining Recommendation Services </h1>
+        <h2> Select The Data And Input Your Query </h2>
+        <form>
+            <label for="data"></label>
+            <select id="data" name="data">
+                <option value="insertgrade">Insert Grade</option>
+                <option value="insertgeometry">English & Literature</option>
+                <option value="insertprofile">History</option>
+            </select>
+            <label for="query">Enter Description</label>
+            <input type="text" id="query" name="query" placeholder="Enter your material requirements">
+            <button type="submit">Submit</button>
+        </form>
+        <h2>Your Insert Material Recommendation Appears Here</h2>
+        <div>
+            <p></p>
+        </div>
+    </body>
+</html>
