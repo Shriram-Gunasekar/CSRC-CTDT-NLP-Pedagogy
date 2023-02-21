@@ -8,22 +8,21 @@
         <h1> Welcome To AltGPT </h1>
         <h2> Alternative GPT </h2>
         <h3> Choose The Service </h3>
-        <div align="left">
+        <div>
             <h4>Library Domain-wise Services</h4>
             <ul>
                 <li>Entomology</li>
                 <li>English & Literature</li>
-                <li>Machine Learning</li>
                 <li>History</li>
             </ul>
         </div>
-        <div align="right">
+        <div>
             <h4>General Purpose Services</h4>
             <ul>
                 <li><a href="{{ url_for('views.plagsim') }}">Plagiarism and Similarity Checker</a></li>
-                <li><a href="{{ url_for('views.eval')}}"> Evaluator </a></li>
-                <li><a href="{{ url_for('views.bertsum')}}">Extractive Data Summarizer </a></li>
-                <li><a href="{{ url_for('views.qa')}}"> Q&A </a></li>
+                <li><a href="{{ url_for('views.eval') }}"> Evaluator </a></li>
+                <li><a href="{{ url_for('views.bertsum') }}">Extractive Data Summarizer </a></li>
+                <li><a href="{{ url_for('views.qa') }}"> Q&A </a></li>
             </ul>
         </div>
         <a align='center' class="nav-item nav-link" id="logout" href="{{ url_for('sign.logout') }}">Logout</a>
