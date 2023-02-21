@@ -15,21 +15,7 @@ def dashboard():
 @views.route('/plagsim', methods=['GET','POST'])
 @login_required
 def plagsim():
-    if request.method == 'POST':
-        orfile = request.form.get('theirplagfile')
-        dupfile = request.form.get('checkplagfile')
-        ortext = request.form.get('theirplagtext')
-        duptext = request.form.get('checkplagtext')
-        if orfile and dupfile:
-            orfile = orfile.read()
-            dupfile = dupfile.read()
-            filescore = plagresult(orfile, dupfile)
-        elif ortext and duptext:
-            textscore = plagresult(ortext, duptext)
-        else:
-            score = "Please upload your text file or paste your text in the text box"
-        return render_template('plagsim.html', user=current_user, score=score)
-    return render_template('plagsim.html', user=current_user)
+    pass
 
 @views.route('/bertsum', methods=['GET','POST'])
 @login_required
@@ -53,7 +39,6 @@ def qa():
 @login_required
 def eval():
     return render_template('eval.html',user=current_user)
-
 
 def answer(type, question, context):
     pass
