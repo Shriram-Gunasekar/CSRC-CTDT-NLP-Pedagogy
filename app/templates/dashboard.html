@@ -20,11 +20,10 @@
             <h4>General Purpose Services</h4>
             <ul>
                 <li><a href="{{ url_for('views.plagsim') }}">Plagiarism and Similarity Checker</a></li>
-                <li><a href="{{ url_for('views.eval') }}"> Evaluator </a></li>
                 <li><a href="{{ url_for('views.bertsum') }}">Extractive Data Summarizer </a></li>
                 <li><a href="{{ url_for('views.qa') }}"> Q&A </a></li>
             </ul>
         </div>
-        <a align='center' class="nav-item nav-link" id="logout" href="{{ url_for('sign.logout') }}">Logout</a>
+        <a class="nav-item nav-link" id="logout" href="{{ url_for('sign.logout') }}">Logout</a>
     </body>
 </html>

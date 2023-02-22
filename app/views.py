@@ -64,8 +64,10 @@ def eval():
 
 def qaanswers(theirqatext, theirqas):
     answers = []
+    temp = ''
     for i in theirqas:
-        answers.append(qamodel({'context':theirqatext,'question': i})['answer'])
+        temp = qamodel({'context':theirqatext,'question': i})
+        answers.append((i,temp['answer'],temp['score']))
     print(answers)
     return answers
 
