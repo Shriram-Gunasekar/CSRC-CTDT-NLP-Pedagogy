@@ -57,15 +57,17 @@ def qa():
         return render_template('qa.html',user=current_user, answers=answers)
     return render_template('qa.html',user=current_user,answers="")
 
-@views.route('/eval',methods=['GET','POST']) 
+@views.route('/machining',methods=['GET','POST']) 
 @login_required
 def eval():
-    return render_template('eval.html',user=current_user)
+    return render_template('machining.html',user=current_user)
 
 def qaanswers(theirqatext, theirqas):
     answers = []
+    temp = ''
     for i in theirqas:
-        answers.append(qamodel({'context':theirqatext,'question': i})['answer'])
+        temp = qamodel({'context':theirqatext,'question': i})
+        answers.append((i,temp['answer'],temp['score']))
     print(answers)
     return answers
 

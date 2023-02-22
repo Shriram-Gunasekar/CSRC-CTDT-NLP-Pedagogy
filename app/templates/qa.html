@@ -15,6 +15,21 @@
             <button type="submit">Submit</button>
         </form>
         <h1> Your Answers Will Appear In Order Of Questions Below </h1>
-        <p> {{ answers }} </p>
+        <table>
+            <tr>
+                <th>Your Question</th>
+                <th>Answer</th>
+                <th>Confidence Score</th>
+            </tr>
+            {% for i in answers %}
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}} </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p> If the provided answer is not to your satisfaction, please provide more data </p>
+        <p> The Confidence Score Will Displayed Next To The Answer </p>
     </body>
 </html>
