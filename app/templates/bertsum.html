@@ -2,6 +2,12 @@
 <html>
     <head>
         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+            body{
+                background-image: url("https://images.pexels.com/photos/733856/pexels-photo-733856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            }
+            
             :root {
                 --color-light: rgb(245, 205, 170);
                 --color-dark: #040404;
@@ -15,7 +21,6 @@
                 --size-radius: 4px;
                 
                 line-height: 1.4;
-                
                 font-family:sans-serif;
                 font-size: calc(.6rem + .4vw);
                 color: var(--color-text);
@@ -40,10 +45,9 @@
                 border: 3px solid var(--color-shadow, currentColor);
                 box-shadow: .5rem .5rem 0 var(--color-shadow, currentColor);
                 &--accent {
-                  --color-background: var(--color-signal);
-                  --color-accent: var(--color-light);
-                  color: var(--color-dark);
-                }
+                    --color-background: var(--color-signal);
+                    --color-accent: var(--color-light);
+                    color: var(--color-dark);}
                 *:first-child {
                   margin-top: 0;
                 }
@@ -130,8 +134,7 @@
         <meta charset="utf-8">
         <title>BERT Extractive Summarizer</title>
     </head>
-    <body>
-        <h1><center>Extractive Summarizer</center></h1>
+        <h1><center>Extractive Summarizer</h1></center></h1>
         <div class="card">
             <form method="POST">
                 <h3><svg class="icon" aria-hidden="true"><use xlink:href="#icon-coffee" href="#icon-coffee" /></svg>Enter Your Data</h3>

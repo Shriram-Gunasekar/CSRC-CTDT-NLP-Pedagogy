@@ -59,7 +59,7 @@ def qa():
 
 @views.route('/machining',methods=['GET','POST']) 
 @login_required
-def eval():
+def machining():
     return render_template('machining.html',user=current_user)
 
 def qaanswers(theirqatext, theirqas):
