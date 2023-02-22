@@ -1,45 +1,147 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-{% block title %}Sign Up Page{% endblock %}
+            body{
+                background-image: url("https://images.pexels.com/photos/733856/pexels-photo-733856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+                background-position: center;
+                background-origin: content-box;
+                background-repeat: no-repeat;
+                background-size: cover;
+                min-height:100vh;
+                font-family: 'Lato', sans-serif;
+                align: center;
+                color:#ffffff;
+            }
+            .text-center{
+                color:#fff;	
+                text-transform:uppercase;
+                font-size: 23px;
+                margin: -50px 0 80px 0;
+                display: block;
+                text-align: center;
+                align:center;
+            }
+            .box{
+                position:absolute;
+                left:50%;
+                top:50%;
+                transform: translate(-50%,-50%);
+                background-color: rgba(0, 0, 0, 0.85);
+                border-radius:3px;
+                padding:70px 100px;
+            }
+            .input-container{
+                position:relative;
+                margin-bottom:25px;
+            }
+            .input-container label{
+                position:absolute;
+                top:0px;
+                left:0px;
+                font-size:16px;
+                color:#fff;	
+                pointer-event:none;
+                transition: all 0.5s ease-in-out;
+            }
+            .input-container input{ 
+            border:0;
+            border-bottom:1px solid #555;  
+            background:transparent;
+            width:100%;
+            padding:8px 0 5px 0;
+            font-size:16px;
+            color:#fff;
+            }
+            .input-container input:focus{ 
+            border:none;	
+            outline:none;
+            border-bottom:1px solid #e74c3c;	
+            }
+            .btn{
+                color:#fff;
+                background-color:#e74c3c;
+                outline: none;
+                border: 0;
+                color: #fff;
+                padding:10px 20px;
+                text-transform:uppercase;
+                margin-top:50px;
+                border-radius:2px;
+                cursor:pointer;
+                position:relative;
+                align:center;
+            }
+            /*.btn:after{
+                content:"";
+                position:absolute;
+                background:rgba(0,0,0,0.50);
+                top:0;
+                right:0;
+                width:100%;
+                height:100%;
+                align:center;
+            }*/
+            .input-container input:focus ~ label,
+            .input-container input:valid ~ label{
+                top:-12px;
+                font-size:12px;
+                
+            }
+            a:link {
+                color: red;
+                background-color: transparent;
+                text-decoration: none;
+            }
+            a:visited {
+                color: orange;
+                background-color: transparent;
+                text-decoration: none;
+            }
+            a:hover {
+                color: orange;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+            a:active {
+                color: orange;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <form method="POST">
+                <span class="text-center"><h1>CREATE ACCOUNT</h1></span>
+                <div id="body" class="input-container" style="width:400px;">
+                    <label for="username"> Username </label>
+                    <input type="text" required=" ">
+                </div>
+            
+                <div id="body" class="input-container" style="width:400px;">
+                    <label for="original_password"> Password </label>
+                    <input type="password" required=" ">
+                </div>
+            
+                <div id="body" class="input-container" style="width:400px;">
+                    <label for="confirmed_password"> Confirm Password </label>
+                    <input type="password" required=" ">
+                </div>
+            
+                <div id="body" class="input-container" style="width:400px;">
+                    <p></p>
+                <button type="submit" class="btn" text-align="center">Submit</button>
+                </div>
+            
+            </form>
+            
+            <div id="body" class="input-container" style="width:400px; ">
+                <h4 align="center"> Already have an account? <a  href="{{ url_for('sign.login') }}">Login</a> </h4>
+            </div>
+        </div>
+    </body>
+</html>        
 
-{% block content %}
-
-<p align="center">
-  Note : Your Username and Alias must be greater than 5 characters. Do not use non-AlphaNumeric characters in your password
-</p>
-
-<br>
-<form method="POST">
-
-    <div class="form-group" style="width:800px; margin:0 auto;">
-        <label for="username"> Username </label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
-    </div>
-
-    <div class="form-group" style="width:800px; margin:0 auto;">
-        <label for="alias"> Alias </label>
-        <input type="text" class="form-control" id="alias" name="alias" placeholder="Enter Alias">
-    </div>
-
-    <div class="form-group" style="width:800px; margin:0 auto;">
-        <label for="original_password"> Password </label>
-        <input type="password" class="form-control" id="original_password" name="original_password" placeholder="Enter password">
-    </div>
-
-    <div class="form-group" style="width:800px; margin:0 auto;">
-        <label for="confirmed_password"> Confirm Password </label>
-        <input type="password" class="form-control" id="confirmed_password" name="confirmed_password" placeholder="Enter password again">
-    </div>
-
-    <div class="form-group" style="width:800px; margin:0 auto;">
-        <p></p>
-    <button type="submit" class="btn btn-outline-success" text-align="center">Submit</button>
-    </div>
-
-</form>
-
-<div class="container" style="width:800px; margin:0 auto;">
-    <h2> Already have an account? <a  href="{{ url_for('sign.login') }}">Login</a> </h2>
-</div>
-
-{% endblock %}
