@@ -4,9 +4,9 @@ import os
 from .setup import config, blueprint, login_det, map
 import torch
 
-# qamodel = torch.load('QA')
+qamodel = torch.load('QA')
 summarymodel = torch.load('Summarizer')
-# semsimmodel = torch.load('Similarity')
+semsimmodel = torch.load('Similarity')
 # grammar = torch.load('Grammar')
 
 db = SQLAlchemy()

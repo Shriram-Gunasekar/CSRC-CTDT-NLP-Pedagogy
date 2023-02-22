@@ -1,0 +1,3 @@
+x = ['HEllo','hi']
+x = ''.join(i for i in x)
+print(x)

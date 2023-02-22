@@ -17,16 +17,7 @@
                 <button type="submit"> Submit </button>
             </form>
         </div>
-        <div>
-            <h3>Upload Your File</h3>
-            <form method="POST" enctype="multipart/form-data">
-                <label for="theirplagfile">Upload The Original Data File </label>
-                <input type="file" id="theirplagfile" name="theirplagfile" >
-                <label for="checkplagfile">Upload The File To Be Compared With</label>
-                <input type="file" id="checkplagfile" name="checkplagfile">
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-        <p> {{ similarity }}</p>
+        <h1> The Similarity Score Will Be Display Below </h1>
+        <p> {{ simscore }} </p>
     </body>
 </html>
