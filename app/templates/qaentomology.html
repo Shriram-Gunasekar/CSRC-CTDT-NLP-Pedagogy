@@ -24,5 +24,20 @@
             <input type="text" id="query" name="query" placeholder="Enter your question">
             <button type="submit">Submit</button>
         </form>
+        <h1> Your Answers Will Appear In Order Of Questions Below </h1>
+        <table>
+            <tr>
+                <th>Your Question</th>
+                <th>Answer</th>
+                <th>Confidence Score</th>
+            </tr>
+            {% for i in answer %}
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}} </td>
+            </tr>
+            {% endfor %}
+        </table>
     </body>
 </html>

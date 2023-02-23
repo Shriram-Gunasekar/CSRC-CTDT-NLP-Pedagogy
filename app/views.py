@@ -137,16 +137,17 @@ def machining():
         return render_template('machining.html',user=current_user, answer=answer, option=option )
     return render_template('machining.html',user=current_user, answer='', option='')
 
-@views.route('/qaentomology', methods=['GET',' POST'])
+@views.route('/qaentomology', methods=['GET', 'POST'])
 @login_required
 def qaentomology():
     if request.method == 'POST':
         concept = request.form.get('concept')
         question = request.form.get('query')
-        print(concept, question)
-        #answer = qaanswers(concept, question)
-        return render_template('qaentomology.html',user=current_user)
-    return render_template('qaentomology.html', user=current_user)
+        data = json.load(open('entomology.json'))
+        concept = data[concept]
+        answer = qaanswers(concept, question.split(';'))
+        return render_template('qaentomology.html',user=current_user, answer=answer)
+    return render_template('qaentomology.html', user=current_user, answer='')
 
 #Model Methods 
 
@@ -155,7 +156,7 @@ def qaanswers(theirqatext, theirqas):
     temp = ''
     for i in theirqas:
         temp = qamodel({'context':theirqatext,'question': i})
-        answers.append((i,temp['answer'],temp['score']))
+        answers.append((i,temp['answer'],round(temp['score']*100,2)))
     return answers
 
 def plagresult(text1,text2):
