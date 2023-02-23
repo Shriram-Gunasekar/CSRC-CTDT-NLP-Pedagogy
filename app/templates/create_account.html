@@ -38,22 +38,23 @@
                 margin-bottom:25px;
             }
             .input-container label{
-                position:absolute;
-                top:0px;
-                left:0px;
-                font-size:16px;
-                color:#fff;	
-                pointer-event:none;
-                transition: all 0.5s ease-in-out;
+              position:absolute;
+              top:0px;
+              left:0px;
+              font-size:16px;
+              color:#fff;	
+              pointer-event:none;
+              transition: all 0.5s ease-in-out;
             }
             .input-container input{ 
-            border:0;
-            border-bottom:1px solid #555;  
-            background:transparent;
-            width:100%;
-            padding:8px 0 5px 0;
-            font-size:16px;
-            color:#fff;
+              border:0;
+              border-bottom:1px solid #555;  
+              background:transparent;
+              width:100%;
+              padding:8px 0 5px 0;
+              font-size:16px;
+              color:#fff;
+              transition: all 0.5s ease-in-out;
             }
             .input-container input:focus{ 
             border:none;	
@@ -117,18 +118,18 @@
             <form method="POST">
                 <span class="text-center"><h1>CREATE ACCOUNT</h1></span>
                 <div id="body" class="input-container" style="width:400px;">
-                    <label for="username"> Username </label>
-                    <input type="text" required=" ">
+                  <input id="username" type="text" required=" ">
+                  <label for="username"> Username </label>
                 </div>
             
                 <div id="body" class="input-container" style="width:400px;">
-                    <label for="original_password"> Password </label>
-                    <input type="password" required=" ">
+                  <input id="original_password" type="password" required=" ">
+                  <label for="original_password"> Password </label>
                 </div>
             
                 <div id="body" class="input-container" style="width:400px;">
-                    <label for="confirmed_password"> Confirm Password </label>
-                    <input type="password" required=" ">
+                  <input id="confirmed_password" type="password" required=" ">
+                  <label for="confirmed_password"> Confirm Password </label>
                 </div>
             
                 <div id="body" class="input-container" style="width:400px;">
