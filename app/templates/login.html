@@ -12,8 +12,11 @@
                 background-size: cover;
                 min-height:100vh;
                 font-family: 'Lato', sans-serif;
-                align: center;
                 color:#ffffff;
+            }
+            .down{
+                font-size:15px;
+                text-align:center;
             }
             .text-center{
                 color:#fff;	
@@ -22,7 +25,6 @@
                 margin: -50px 0 80px 0;
                 display: block;
                 text-align: center;
-                align:center;
             }
             .box{
                 position:absolute;
@@ -73,7 +75,11 @@
                 border-radius:2px;
                 cursor:pointer;
                 position:relative;
-                align:center;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                width:50%;
             }
             *.btn:after{
                 content:"";
@@ -118,12 +124,12 @@
             <form action="" method="POST">
                 <span class="text-center"><h1>LOGIN</h1></span>
                 <div id="body" class="input-container" style="width:400px;">
-                    <input id="username" type="text" name="username" required=" ">
+                    <input id="username" type="text" required=" ">
                     <label for="username"> Username</label>
                 </div>
                 
                 <div id="body" class="input-container" style="width:400px;">
-                    <input id="password" type="password" name="password" required=" ">
+                    <input id="password" type="password" required=" ">
                     <label for="password"> Password</label>
                 </div>
                 
@@ -132,7 +138,7 @@
                 <button type="submit" class="btn" text-align="center"> Submit </button>
                 </div>
             </form>
-            <div id="body" class="input-container" style="width:400px;">
+            <div id="down" class="down" style="width:400px;">
                 <h4> Don't have an account? <a  href="{{ url_for('sign.create_account') }}"> Create account </a> </h4>
             </div>
         <div>
