@@ -12,6 +12,9 @@ semsimmodel = torch.load('Similarity')
 geometrymodel = pickle.load(open('geometrymodel','rb'))
 grademodel = pickle.load(open('grademodel','rb'))
 profilemodel = pickle.load(open('profilemodel','rb'))
+geometryvectorizer = pickle.load(open('geometryvectorizer','rb'))
+gradevectorizer = pickle.load(open('gradevectorizer','rb'))
+profilevectorizer = pickle.load(open('profilevectorizer','rb'))
 
 db = SQLAlchemy()
 
