@@ -47,13 +47,14 @@
                 transition: all 0.5s ease-in-out;
             }
             .input-container input{ 
-            border:0;
-            border-bottom:1px solid #555;  
-            background:transparent;
-            width:100%;
-            padding:8px 0 5px 0;
-            font-size:16px;
-            color:#fff;
+                border:0;
+                border-bottom:1px solid #555;  
+                background:transparent;
+                width:100%;
+                padding:8px 0 5px 0;
+                font-size:16px;
+                color:#fff;
+                transition: all 0.5s ease-in-out;
             }
             .input-container input:focus{ 
             border:none;	
@@ -77,7 +78,7 @@
             *.btn:after{
                 content:"";
                 position:absolute;
-                background:rgba(0,0,0,0.50);
+                background:rgba(0,0,0,0);
                 top:0;
                 right:0;
                 width:100%;
@@ -124,7 +125,7 @@
                     <input id="password" type="password" required=" ">
                     <label for="password"> Password</label>
                 </div>
-                <div id="body" class="form-group" style="width:400px;">
+                <div id="body" class="input-container" style="width:400px;">
                     <p></p>
                 <button type="submit" class="btn" text-align="center"> Submit </button>
                 </div>
