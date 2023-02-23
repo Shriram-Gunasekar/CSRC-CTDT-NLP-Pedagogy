@@ -48,24 +48,23 @@ def create_account():
     '''
     if request.method == 'POST':
         username = request.form.get('username')
-        alias = request.form.get('alias')
         original_password = request.form.get('original_password')
         confirmed_password = request.form.get('confirmed_password')
         
         #  Validating The Form Data Below
 
-        if(validate(username,alias,original_password,confirmed_password) == True):
-            new_account = Account(username=username,password=original_password, alias=alias)
+        if(validate(username,original_password,confirmed_password) == True):
+            new_account = Account(username=username,password=original_password)
             db.session.add(new_account)
             db.session.commit()
             login_user(new_account, remember=True)
             flash('Your account has been created', category='success')
             return redirect(url_for('views.dashboard'))
         
-        elif(validate(username,alias,original_password,confirmed_password) == False):
+        elif(validate(username,original_password,confirmed_password) == False):
             flash('Constraints Not Satisfied or passwords didn\'t match. Try Again', category='error')
         
-        elif(validate(username,alias,original_password,confirmed_password) == None):
+        elif(validate(username,original_password,confirmed_password) == None):
             flash('Username taken. Please choose another', category='error')
 
     return render_template("create_account.html", user=current_user)
@@ -86,7 +85,7 @@ def validate(username, alias, original_password, confirmed_password):
     visitor = Account.query.filter_by(username=username).first()
     if visitor and visitor.username == username:
         return None
-    if (original_password != confirmed_password) or len(username)<5 or len(alias)<5 or not(original_password.isalnum()) or len(original_password)<8:
+    if (original_password != confirmed_password) or len(username)<5 or not(original_password.isalnum()) or len(original_password)<8:
         return False
     else:
         return True
