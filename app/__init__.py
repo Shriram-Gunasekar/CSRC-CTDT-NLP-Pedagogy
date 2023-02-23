@@ -3,11 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from .setup import config, blueprint, login_det, map
 import torch
+import pickle
 
 qamodel = torch.load('QA')
 summarymodel = torch.load('Summarizer')
 semsimmodel = torch.load('Similarity')
-# grammar = torch.load('Grammar')
+#grammar = torch.load('Grammar')
+geometrymodel = pickle.load(open('geometrymodel','rb'))
+grademodel = pickle.load(open('grademodel','rb'))
+profilemodel = pickle.load(open('profilemodel','rb'))
 
 db = SQLAlchemy()
 

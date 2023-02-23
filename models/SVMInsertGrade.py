@@ -1,4 +1,5 @@
 import json
+import pickle
 with open('InsertGradeData.json','r') as f:
         data = json.load(f)
         
@@ -16,3 +17,9 @@ clf_svm.fit(train_annot,data['Grades'])
 
 test_x = vectorizer.transform(['Lightweight, easy to use, and very comfortable.'])
 print(clf_svm.predict(test_x))
+
+pickle.dump(clf_svm, open('grademodel','wb'))
+
+grademodel = pickle.load(open('grademodel','rb'))
+result = grademodel.predict(test_x)
+print(result)

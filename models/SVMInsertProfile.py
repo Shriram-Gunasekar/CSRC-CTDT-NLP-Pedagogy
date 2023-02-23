@@ -1,22 +1,20 @@
 import json
 import pickle
 
-with open('InsertGeometry.json','r') as f:
+with open('InsertProfile.json','r') as f:
         data = json.load(f)
         
 annot = []
 for i in data:
     for j in range(len(data[i])):
         annot.append(data[i][j])
-#print(annot)
+print(annot)
 
 labels = []
 for i in data:
     for j in range(len(data[i])):
         labels.append(i)
-#print(labels)
-
-
+print(labels)
 from sklearn.feature_extraction.text import CountVectorizer
 
 vectorizer = CountVectorizer(binary=True)
@@ -31,9 +29,8 @@ clf_svm.fit(train_annot, labels)
 
 test_x = vectorizer.transform(['Recommend the best geometry for high speed machining'])
 print(clf_svm.predict(test_x))
+pickle.dump(clf_svm, open('profilemodel','wb'))
 
-pickle.dump(clf_svm, open('geometrymodel','wb'))
-
-geometrymodel = pickle.load(open('geometrymodel','rb'))
-result = geometrymodel.predict(test_x)
+profilemodel = pickle.load(open('profilemodel','rb'))
+result = profilemodel.predict(test_x)
 print(result)

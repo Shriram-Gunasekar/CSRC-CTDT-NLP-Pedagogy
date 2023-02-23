@@ -17,19 +17,20 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-
+        print(username,password)
         if(authenticate(username, password) == True):
             visitor = Account.query.filter_by(username=username).first()
             flash('Authorization Complete', category='success')
             login_user(visitor, remember=True)
+            print('Authorized')
             return redirect(url_for('views.dashboard'))
         
         elif(authenticate(username, password) == False):
             flash('Authorization Failed. Please check your password', category='error')
-        
+            print("Fail")
         elif(authenticate(username, password) == None):
             flash('Your Account probably doesn\'t exist, create a new account?', category='error')
-        
+            print("Account doesn't exist")
     return render_template("login.html", user=current_user)
 
 

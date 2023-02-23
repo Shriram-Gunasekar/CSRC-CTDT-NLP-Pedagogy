@@ -3,9 +3,14 @@ from .models import Account
 from . import qamodel
 from . import summarymodel
 from . import semsimmodel
+from . import geometrymodel
+from . import grademodel
+from . import profilemodel
 from flask_login import login_required, current_user
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from sentence_transformers import util
+import json
+from sklearn.feature_extraction.text import CountVectorizer
 
 views = Blueprint('views', __name__, url_defaults=None, root_path=None ) #template_folder not specified
 
@@ -23,8 +28,6 @@ def plagsim():
         if theirplagtext and checkplagtext:
             simscore = plagresult(theirplagtext,checkplagtext)
             simscore = round(simscore.item()*100, 2)
-            #simscore = simscore * 100
-            #simscore = round(simscore, 2)
         else:
             simscore = "Enter Valid Inputs"
         return render_template('plagsim.html', user=current_user, simscore=simscore)
@@ -60,7 +63,19 @@ def qa():
 @views.route('/machining',methods=['GET','POST']) 
 @login_required
 def machining():
+    if request.method == 'POST':
+        option = request.form.get('option')
+        query = request.form.get('query')
+        answer = recommender(query,option)
+        return render_template('machining.html',user=current_user, answer=answer, option=option )
     return render_template('machining.html',user=current_user)
+
+@views.route('/qaentomology', methods=['GET',' POSt'])
+@login_required
+def qaentomology():
+    if request.method == 'POST':
+        theirtopic = request
+    return render_template('qaentomology.html', user=current_user)
 
 def qaanswers(theirqatext, theirqas):
     answers = []
@@ -81,3 +96,11 @@ def summarizer(data,sentences):
     answer = summarymodel(data, num_sentences=int(sentences), min_length=5)
     return answer
 
+def recommender(text, option):
+    if option == 'insertgrade':
+        return grademodel.predict(text)
+    if option == 'insertgeometry':
+        return geometrymodel.predict(text)
+    if option == 'insertprofile':
+        return profilemodel.predict(text)
+    

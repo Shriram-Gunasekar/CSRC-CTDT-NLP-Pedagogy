@@ -8,8 +8,8 @@
         <h1> Machining Recommendation Services </h1>
         <h2> Select The Data And Input Your Query </h2>
         <form>
-            <label for="data"></label>
-            <select id="data" name="data">
+            <label for="option"></label>
+            <select id="option" name="option">
                 <option value="insertgrade">Insert Grade</option>
                 <option value="insertgeometry">Insert Geometry</option>
                 <option value="insertprofile">Insert Profile</option>
@@ -20,7 +20,7 @@
         </form>
         <h2>Your Insert Material Recommendation Appears Here</h2>
         <div>
-            <p></p>
+            <p> Your Recommendation : {{ answer }} </p>
         </div>
     </body>
 </html>
