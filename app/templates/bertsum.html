@@ -127,11 +127,14 @@
                 font-size:16px;
                 color:#fff;
             }
-            .textarea{
+            txta{
                 position:relative;
                 margin:25px;
+                outline:none;
+                resize:none;
+                overflow:auto;
             }
-            .textarea label{
+            txta::label{
                 position:absolute;
                 top:-35px;
                 left:10px;
@@ -144,28 +147,6 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
-            .textarea input{ 
-                border:0.5px solid #555;
-                border-width:3px; 
-                border-style:solid; 
-                border-radius:3px;            
-                background:transparent;
-                width:100%;
-                padding:8px 0 5px 0;
-                font-size:16px;
-                color:#fff;
-                height:400px;
-                font-size:14px;
-            }
-            .textarea input:focus{ 
-                border:1px solid #e74c3c;
-                outline:none;	
-            }
-            .textarea input:focus ~ label,
-            .textarea input:valid ~ label{
-                top:-12px;
-                font-size:12px;
-            }
         </style>
         <meta charset="utf-8">
         <title> BERT Extractive Summarizer </title>
@@ -174,8 +155,8 @@
         <h1 class="center">EXTRACTIVE SUMMARIZER</h1>
         <div class="box">
             <form action="" method="POST">
-                <div id="body" class="textarea" style="width:400px;">
-                    <textarea id="theirsumtext" type="textarea" required=""></textarea>
+                <div id="body" class="txta" style="width:400px;">
+                    <textarea id="theirsumtext" type="textarea" class="txta" required=""></textarea>
                     <label for="theirsumtext">Enter your data</label>
                 </div>
                 <div id="body" class="input-container" style="width:400px;">
