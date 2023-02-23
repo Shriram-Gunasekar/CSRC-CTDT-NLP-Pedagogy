@@ -26,7 +26,16 @@
             }
             .box{
                 position:absolute;
-                left:50%;
+                left:25%;
+                top:60%;
+                transform: translate(-50%,-50%);
+                background-color: rgba(0, 0, 0, 0.85);
+                border-radius:3px;
+                padding:70px 100px;
+            }
+            .boxe{
+                position:absolute;
+                left:75%;
                 top:50%;
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
@@ -35,20 +44,26 @@
             }
             .input-container{
                 position:relative;
-                margin-bottom:25px;
+                margin:25px;
             }
             .input-container label{
                 position:absolute;
-                top:0px;
-                left:0px;
-                font-size:16px;
+                top:-35px;
+                left:10px;
+                font-size:18px;
                 color:#fff;	
                 pointer-event:none;
-                transition: all 0.5s ease-in-out;
+                transition: all zoom-out;
+                transition:all 0.5s ease-in-out;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, -50%);
             }
             .input-container input{ 
-            border:0;
-            border-bottom:1px solid #555;  
+            border:1px solid #ffffff;
+            border-width:3px; 
+            border-style:solid; 
+            border-radius:3px;            
             background:transparent;
             width:100%;
             padding:8px 0 5px 0;
@@ -56,9 +71,8 @@
             color:#fff;
             }
             .input-container input:focus{ 
-            border:none;	
-            outline:none;
-            border-bottom:1px solid #e74c3c;	
+            border:1px solid #e74c3c;
+            outline:none;	
             }
             .btn{
                 color:#fff;
@@ -88,32 +102,57 @@
             .input-container input:valid ~ label{
                 top:-12px;
                 font-size:12px;
-                
+            }
+            .center{
+                text-align: center;
+                font-size:60px;
+                top:10%;
+            }
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none; 
+                margin: 0; 
+            }
+            .input[type=number] {
+                border:1px solid #ffffff;
+                border-width:3px; 
+                border-style:solid; 
+                border-radius:3px;            
+                background:transparent;
+                width:100%;
+                padding:8px 0 5px 0;
+                font-size:16px;
+                color:#fff;
             }
         </style>
         <meta charset="utf-8">
         <title> BERT Extractive Summarizer </title>
     </head>
     <body>
-        <span class="text-center"><h1>Extractive Summarizer</h1></span>
+        <h1 class="center">EXTRACTIVE SUMMARIZER</h1>
         <div class=box>
             <form method="POST">
                 <div id="body" class="input-container" style="width:400px;">
-                    <label for="theirsumtext">Enter Your Data</label>
-                    <input type="text" required=" "/>
+                    <input id="theirsumtext" style="height:200px;font-size:14px;width:400px" type="textarea" required=""></input>
+                    <label for="theirsumtext"><h4>Enter your data</h4></label>
                 </div>
                 <div id="body" class="input-container" style="width:400px;">
-                    <label for="sentences">Enter Number of Sentences</label>
-                    <input type="text" required=" "/>
+                    <input id="textsentences" style="width:400px" type="number" required=" "/>
+                    <label for="sentences"><h4>Enter number of sentences</h4></label>
                 </div>
-                <div id="body" class="form-group" style="width:400px;">
+                <div id="body" class="input-container" style="width:400px;">
                     <p></p>
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="btn" text-align="center">Submit</button>
                 </div>
             </form>
         </div>
-        <h1>Your Results Will Display Below Here</h1>
-        <h4> Your Text Summary </h4>
-        <p> {{ textsummary }} </p>
+        <div class=boxe>    
+            <div id="body" class="input-container" style="width:400px;">
+                <p></p>
+                <h3>Your Text Summary Results:</h3>
+                <h4> Your Text Summary </h4>
+                <p> {{ textsummary }} </p>
+            </div>
+        </div>
     </body>
 </html>
