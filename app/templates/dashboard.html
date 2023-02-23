@@ -11,9 +11,7 @@
         <div>
             <h4>Library Domain-wise Services</h4>
             <ul>
-                <li>Entomology</li>
-                <li>English & Literature</li>
-                <li>History</li>
+                <li><a href="{{ url_for('views.qaentomology') }}">Entomology</a></li>
                 <li><a href="{{ url_for('views.machining') }}">Machining</a></li>
             </ul>
         </div>
@@ -22,8 +20,10 @@
             <ul>
                 <li><a href="{{ url_for('views.plagsim') }}">Plagiarism and Similarity Checker - Text Input</a></li>
                 <li><a href="{{ url_for('views.pdfsim') }}">Plagiarism and Similarity Checker - PDF Input</a></li>
-                <li><a href="{{ url_for('views.bertsum') }}">Extractive Data Summarizer </a></li>
-                <li><a href="{{ url_for('views.qa') }}"> Q&A </a></li>
+                <li><a href="{{ url_for('views.bertsum') }}">Extractive Data Summarizer - Text Input</a></li>
+                <li><a href="{{ url_for('views.pdfsum') }}">Extractive Data Summarizer - PDF Input</a></li>
+                <li><a href="{{ url_for('views.qa') }}"> Q&A - Text Input </a></li>
+                <li><a href="{{ url_for('views.pdfqa') }}"> Q&A - PDF Input </a></li>
             </ul>
         </div>
         <a class="nav-item nav-link" id="logout" href="{{ url_for('sign.logout') }}">Logout</a>

@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Question Answering Via PDF</title>
         <meta charset="utf-8">
-        <title>Q&A Responses</title>
     </head>
     <body>
-        <h1> Queries & Answers </h1>
-        <h2> Enter Your Data And Query </h2>
-        <form action="" method="POST">
-            <label for="theirqatext">Enter Your Data</label>
-            <input type="text" id="theirqatext" name="theirqatext" placeholder="Enter your data">
-            <label for="theirqas">Enter Questions Separated By Semicolons</label>
-            <input type="text" id="theirqas" name="theirqas" placeholder="Enter Your Q's Separated By Semicolons">
+        <h1>Upload Your Files Below</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <label for="pdf">Upload Your PDF File</label>
+            <input type="file" id="theirpdf" name="theirpdf">
+            <label for="theirqas">Enter Your Questions Seperated By Semicolon</label>
+            <input type="text" id="theirqas" name="theirqas">
             <button type="submit">Submit</button>
         </form>
-        <h1> Your Answers Will Appear In Order Of Questions Below </h1>
+        <h2>Result</h2>
         <table>
             <tr>
                 <th>Your Question</th>
@@ -31,5 +30,4 @@
         </table>
         <p> If the provided answer is not to your satisfaction, please provide more data </p>
         <p> The Confidence Score Will Displayed Next To The Answer </p>
-    </body>
 </html>

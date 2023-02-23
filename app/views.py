@@ -1,5 +1,6 @@
 from . import db
 from .models import Account
+
 from . import qamodel
 from . import summarymodel
 from . import semsimmodel
@@ -9,13 +10,19 @@ from . import profilemodel
 from . import geometryvectorizer
 from . import gradevectorizer
 from . import profilevectorizer
+
 from flask_login import login_required, current_user
 from flask import Blueprint, render_template, request, flash, redirect, url_for
+
 from sentence_transformers import util
+
 import json
 import os
+
 from sklearn.feature_extraction.text import CountVectorizer
+
 from PyPDF2 import PdfReader
+
 vectorizer = CountVectorizer(binary=True)
 
 views = Blueprint('views', __name__, url_defaults=None, root_path=None ) #template_folder not specified
@@ -79,12 +86,13 @@ def bertsum():
 def pdfsum():
     if request.method == 'POST':
         theirpdf = request.files['theirpdf']
+        textsentences = request.form.get('textsentences')
         if theirpdf:
             theirpdf.save(theirpdf.filename)
             theirpdfdata = PdfReader(theirpdf.filename)
             theirpdfdata = ''.join([theirpdfdata.pages[i].extract_text() for i in range(len(theirpdfdata.pages))])
             os.remove(theirpdf.filename)
-            textsummary = summarizer(theirpdfdata)
+            textsummary = summarizer(theirpdfdata,sentences=textsentences)
         return render_template('pdfsum.html', user=current_user,textsummary=textsummary)
     return render_template('pdfsum.html',user=current_user,textsummary="")
 
@@ -129,11 +137,15 @@ def machining():
         return render_template('machining.html',user=current_user, answer=answer, option=option )
     return render_template('machining.html',user=current_user, answer='', option='')
 
-@views.route('/qaentomology', methods=['GET',' POSt'])
+@views.route('/qaentomology', methods=['GET',' POST'])
 @login_required
 def qaentomology():
     if request.method == 'POST':
-        theirtopic = request
+        concept = request.form.get('concept')
+        question = request.form.get('query')
+        print(concept, question)
+        #answer = qaanswers(concept, question)
+        return render_template('qaentomology.html',user=current_user)
     return render_template('qaentomology.html', user=current_user)
 
 #Model Methods 
@@ -144,7 +156,6 @@ def qaanswers(theirqatext, theirqas):
     for i in theirqas:
         temp = qamodel({'context':theirqatext,'question': i})
         answers.append((i,temp['answer'],temp['score']))
-    print(answers)
     return answers
 
 def plagresult(text1,text2):
@@ -153,7 +164,7 @@ def plagresult(text1,text2):
     cosine_sim = util.pytorch_cos_sim(text1_representation,text2_representation)   
     return cosine_sim 
 
-def summarizer(data,sentences):
+def summarizer(data,sentences=5):
     answer = summarymodel(data, num_sentences=int(sentences), min_length=5)
     return answer
 
@@ -167,4 +178,3 @@ def recommender(text, option):
     if option == 'insertprofile':
         text = profilevectorizer.transform([text])
         return profilemodel.predict(text)
-    
