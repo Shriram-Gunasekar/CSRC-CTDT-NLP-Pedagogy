@@ -125,17 +125,17 @@
             <form method="POST">
                 <span class="text-center"><h1>CREATE ACCOUNT</h1></span>
                 <div id="body" class="input-container" style="width:400px;">
-                  <input id="username" type="text" required=" ">
+                  <input id="username" type="text" name="username" required=" ">
                   <label for="username"> Username </label>
                 </div>
             
                 <div id="body" class="input-container" style="width:400px;">
-                  <input id="original_password" type="password" required=" ">
+                  <input id="original_password" type="password" name="original_password" required=" ">
                   <label for="original_password"> Password </label>
                 </div>
             
                 <div id="body" class="input-container" style="width:400px;">
-                  <input id="confirmed_password" type="password" required=" ">
+                  <input id="confirmed_password" type="password" name="confirmed_password" required=" ">
                   <label for="confirmed_password"> Confirm Password </label>
                 </div>
             
@@ -143,9 +143,7 @@
                     <p></p>
                 <button type="submit" class="btn" text-align="center">Submit</button>
                 </div>
-            
             </form>
-            
             <div id="down" class="down" style="width:400px; ">
                 <h4 align="center"> Already have an account? <a  href="{{ url_for('sign.login') }}">Login</a> </h4>
             </div>
