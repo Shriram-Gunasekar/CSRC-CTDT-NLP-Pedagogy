@@ -6,26 +6,36 @@
     </head>
     <body>
         <h1> Welcome To AltGPT </h1>
-        <h2> Alternative GPT </h2>
-        <h3> Choose The Service </h3>
-        <div>
-            <h4>Library Domain-wise Services</h4>
-            <ul>
-                <li><a href="{{ url_for('views.qaentomology') }}">Entomology</a></li>
-                <li><a href="{{ url_for('views.machining') }}">Machining</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4>General Purpose Services</h4>
-            <ul>
-                <li><a href="{{ url_for('views.plagsim') }}">Plagiarism and Similarity Checker - Text Input</a></li>
-                <li><a href="{{ url_for('views.pdfsim') }}">Plagiarism and Similarity Checker - PDF Input</a></li>
-                <li><a href="{{ url_for('views.bertsum') }}">Extractive Data Summarizer - Text Input</a></li>
-                <li><a href="{{ url_for('views.pdfsum') }}">Extractive Data Summarizer - PDF Input</a></li>
-                <li><a href="{{ url_for('views.qa') }}"> Q&A - Text Input </a></li>
-                <li><a href="{{ url_for('views.pdfqa') }}"> Q&A - PDF Input </a></li>
-            </ul>
-        </div>
+        <h1>Dashboard</h1>
+        <p>Here is the dashboard</p>
+        <p>Here is the navlink</p>
+        <h1> Here is your chatbox </h1>
+        <p>Here is the chatbox</p>
+        <form action="" method="post">
+            <label for="message">Enter your query</label>
+            <input type="text" name="message" id="message" placeholder="Enter your message">
+            <input type="submit" value="Send">
+        </form>
+        <h1> ALTGPT Response </h1>
+        <p>Here is the response</p>
+        <p> {{ answer }} </p>
+        {% if code == 5 %}
+        <a href="{{ url_for('views.pdfsum') }}">File Summarizer</a>
+        {% elif code == 6 %}
+        <a href="{{ url_for('views.bertsum') }}">Text Summarizer</a>
+        {% elif code == 8 %}
+        <a href="{{ url_for('views.plagsim') }}">Text Similarity</a>
+        {% elif code == 7 %}
+        <a href="{{ url_for('views.pdfsim') }}">File Similarity</a>
+        {% elif code == 10 %}
+        <a href="{{ url_for('views.qa') }}">Text Q&A</a>
+        {% elif code == 9 %}
+        <a href="{{ url_for('views.pdfqa') }}">File Q&A</a>
+        {% elif code == 14 %}
+        <a href="{{ url_for('views.qaentomology') }}">Entomology</a>
+        {% elif code == 17 %}
+        <a href="{{ url_for('views.machining') }}">Entomology</a>
+        {% endif %}
         <a class="nav-item nav-link" id="logout" href="{{ url_for('sign.logout') }}">Logout</a>
     </body>
 </html>

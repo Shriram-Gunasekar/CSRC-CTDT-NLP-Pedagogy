@@ -4,12 +4,15 @@ from .models import Account
 from . import qamodel
 from . import summarymodel
 from . import semsimmodel
+
 from . import geometrymodel
 from . import grademodel
 from . import profilemodel
 from . import geometryvectorizer
 from . import gradevectorizer
 from . import profilevectorizer
+from . import convoclassifier
+from . import convovectorizer
 
 from flask_login import login_required, current_user
 from flask import Blueprint, render_template, request, flash, redirect, url_for
@@ -17,6 +20,8 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from sentence_transformers import util
 
 import json
+responses = json.load(open('answers.json'))
+responses = responses['answers']
 import os
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -31,6 +36,12 @@ views = Blueprint('views', __name__, url_defaults=None, root_path=None ) #templa
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def dashboard():
+    if request.method == 'POST':
+        message = request.form.get('message')
+        response = convo(message)
+        code = response[0]
+        response = response[1]
+        return render_template('dashboard.html', user=current_user, response=response, code=code)
     return render_template('dashboard.html', user=current_user)
 
 # General Services
@@ -151,6 +162,14 @@ def qaentomology():
 
 #Model Methods 
 
+def convo(text):
+    vector = convovectorizer.transform([text])
+    result = convoclassifier(vector)
+    index = responses.index(result)
+    return (index,result)
+        
+    
+
 def qaanswers(theirqatext, theirqas):
     answers = []
     temp = ''
@@ -179,3 +198,6 @@ def recommender(text, option):
     if option == 'insertprofile':
         text = profilevectorizer.transform([text])
         return profilemodel.predict(text)
+
+def evaluator(text):
+    pass
