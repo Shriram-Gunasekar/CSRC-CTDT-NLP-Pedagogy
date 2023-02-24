@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Plagiarism Checker Via Similarity</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Upload Your Files Below</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="file1">Upload Your Original File</label>
+            <input type="file" id="theirpdf" name="theirpdf">
+            <label for="file2">Upload The File To Be Compared With</label>
+            <input type="file" id="theirpdf" name="checkpdf">
+            <button type="submit">Submit</button>
+        </form>
+        <h2>Result</h2>
+        <p> Similarity Score {{ simscore }} </p>
+    </body>
+</html>

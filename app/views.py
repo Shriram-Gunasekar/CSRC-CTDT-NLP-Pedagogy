@@ -13,15 +13,20 @@ from flask_login import login_required, current_user
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from sentence_transformers import util
 import json
+import os
 from sklearn.feature_extraction.text import CountVectorizer
+from PyPDF2 import PdfReader
 vectorizer = CountVectorizer(binary=True)
 
 views = Blueprint('views', __name__, url_defaults=None, root_path=None ) #template_folder not specified
 
+# Dashboard
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def dashboard():
     return render_template('dashboard.html', user=current_user)
+
+# General Services
 
 @views.route('/plagsim', methods=['GET','POST'])
 @login_required
@@ -37,6 +42,25 @@ def plagsim():
         return render_template('plagsim.html', user=current_user, simscore=simscore)
     return render_template('plagsim.html', user=current_user, simscore="")
 
+@views.route('/pdfsim', methods=['GET','POST'])
+@login_required
+def pdfsim():
+    if request.method == 'POST':
+        theirpdf = request.files['theirpdf']
+        checkpdf = request.files['checkpdf']
+        if theirpdf and checkpdf:
+            theirpdf.save(theirpdf.filename)
+            checkpdf.save(checkpdf.filename)
+            theirpdfdata = PdfReader(theirpdf.filename)
+            checkpdfdata = PdfReader(checkpdf.filename)
+            theirpdfdata = ''.join([theirpdfdata.pages[i].extract_text() for i in range(len(theirpdfdata.pages))])
+            checkpdfdata = ''.join([checkpdfdata.pages[i].extract_text() for i in range(len(checkpdfdata.pages))])
+            os.remove(theirpdf.filename)
+            os.remove(checkpdf.filename)
+            simscore = plagresult(theirpdfdata,checkpdfdata)        
+        return render_template('pdfsim.html', user=current_user, simscore=simscore)
+    return render_template('pdfsim.html', user=current_user, simscore="")
+
 @views.route('/bertsum', methods=['GET','POST'])
 @login_required
 def bertsum():
@@ -49,6 +73,20 @@ def bertsum():
             textsummary = "Please Enter Valid Input"
         return render_template('bertsum.html', user=current_user,textsummary=textsummary)
     return render_template('bertsum.html',user=current_user,textsummary="")
+
+@views.route('/pdfsum', methods=['GET','POST'])
+@login_required
+def pdfsum():
+    if request.method == 'POST':
+        theirpdf = request.files['theirpdf']
+        if theirpdf:
+            theirpdf.save(theirpdf.filename)
+            theirpdfdata = PdfReader(theirpdf.filename)
+            theirpdfdata = ''.join([theirpdfdata.pages[i].extract_text() for i in range(len(theirpdfdata.pages))])
+            os.remove(theirpdf.filename)
+            textsummary = summarizer(theirpdfdata)
+        return render_template('pdfsum.html', user=current_user,textsummary=textsummary)
+    return render_template('pdfsum.html',user=current_user,textsummary="")
 
 @views.route('/qa', methods=['GET','POST'])
 @login_required
@@ -64,6 +102,23 @@ def qa():
         return render_template('qa.html',user=current_user, answers=answers)
     return render_template('qa.html',user=current_user,answers="")
 
+@views.route('/pdfqa', methods=['GET','POST'])
+@login_required
+def pdfqa():
+    if request.method == 'POST':
+        theirpdf = request.files['theirpdf']
+        theirqas = request.form.get('theirqas')
+        if theirpdf and theirqas:
+            theirpdf.save(theirpdf.filename)
+            theirpdfdata = PdfReader(theirpdf.filename)
+            theirpdfdata = ''.join([theirpdfdata.pages[i].extract_text() for i in range(len(theirpdfdata.pages))])
+            os.remove(theirpdf.filename)
+            answers = qaanswers(theirpdfdata, theirqas.split(';'))
+        return render_template('pdfqa.html',user=current_user, answers=answers)
+    return render_template('pdfqa.html',user=current_user,answers="")
+
+# Department Services
+
 @views.route('/machining',methods=['GET','POST']) 
 @login_required
 def machining():
@@ -72,7 +127,7 @@ def machining():
         query = request.form.get('query')
         answer = recommender(query,option)
         return render_template('machining.html',user=current_user, answer=answer, option=option )
-    return render_template('machining.html',user=current_user)
+    return render_template('machining.html',user=current_user, answer='', option='')
 
 @views.route('/qaentomology', methods=['GET',' POSt'])
 @login_required
@@ -80,6 +135,8 @@ def qaentomology():
     if request.method == 'POST':
         theirtopic = request
     return render_template('qaentomology.html', user=current_user)
+
+#Model Methods 
 
 def qaanswers(theirqatext, theirqas):
     answers = []
