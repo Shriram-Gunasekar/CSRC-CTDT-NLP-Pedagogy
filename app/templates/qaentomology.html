@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1> Welcome To Entomology Q&A </h1>
-        <form method="POST">
+        <form action="" method="POST">
             <label for="concept">Select Concept</label>
             <select id="concept" name="concept">
                 <option value="insectposition">Position Of Insects In The Animal Kingdom</option>
@@ -20,9 +20,24 @@
                 <option value="symphyla">Relation of Symphyla To Insects</option>
                 <option value="symphylacharacter">Diagnostic Characteristics of Symphyla</option>
             </select>
-            <label for="query">Enter Your Query</label>
+            <label for="query">Enter Your Queries Separated By Semicolons</label>
             <input type="text" id="query" name="query" placeholder="Enter your question">
             <button type="submit">Submit</button>
         </form>
+        <h1> Your Answers Will Appear In Order Of Questions Below </h1>
+        <table>
+            <tr>
+                <th>Your Question</th>
+                <th>Answer</th>
+                <th>Confidence Score</th>
+            </tr>
+            {% for i in answer %}
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}} </td>
+            </tr>
+            {% endfor %}
+        </table>
     </body>
 </html>

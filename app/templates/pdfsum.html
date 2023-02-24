@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PDF Summarizer</title>
+    </head>
+    <body>
+        <h1>PDF Summarizer</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <label for="theirpdf">Upload Your File</label>
+            <input type="file" id="theirpdf" name="theirpdf">
+            <label for="textsentences">Number of Sentences</label>
+            <input type="number" id="textsentences" name="textsentences">
+            <button type="submit">Submit</button>
+        </form>
+        <h2>Result</h2>
+        <p> {{ textsummary }} </p>
+    </body>
+</html>
