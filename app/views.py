@@ -38,10 +38,12 @@ views = Blueprint('views', __name__, url_defaults=None, root_path=None ) #templa
 def dashboard():
     if request.method == 'POST':
         message = request.form.get('message')
-        response = convo(message)
-        code = response[0]
-        response = response[1]
-        return render_template('dashboard.html', user=current_user, response=response, code=code)
+        scores = []
+        for i in responses:
+            scores.append(plagresult(message,i))
+        answer = responses[scores.index(max(scores))]
+        code = scores.index(max(scores))
+        return render_template('dashboard.html', user=current_user, response=answer, code=code)
     return render_template('dashboard.html', user=current_user)
 
 # General Services
@@ -160,15 +162,7 @@ def qaentomology():
         return render_template('qaentomology.html',user=current_user, answer=answer)
     return render_template('qaentomology.html', user=current_user, answer='')
 
-#Model Methods 
-
-def convo(text):
-    vector = convovectorizer.transform([text])
-    result = convoclassifier(vector)
-    index = responses.index(result)
-    return (index,result)
-        
-    
+#Model Methods     
 
 def qaanswers(theirqatext, theirqas):
     answers = []

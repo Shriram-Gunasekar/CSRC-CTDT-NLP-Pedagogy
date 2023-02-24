@@ -11,14 +11,14 @@
         <p>Here is the navlink</p>
         <h1> Here is your chatbox </h1>
         <p>Here is the chatbox</p>
-        <form action="" method="post">
+        <form action="" method="POST">
             <label for="message">Enter your query</label>
             <input type="text" name="message" id="message" placeholder="Enter your message">
-            <input type="submit" value="Send">
+            <button type="submit" value="submit">Submit</button>
         </form>
         <h1> ALTGPT Response </h1>
         <p>Here is the response</p>
-        <p> {{ answer }} </p>
+        <p> {{ response }} </p>
         {% if code == 5 %}
         <a href="{{ url_for('views.pdfsum') }}">File Summarizer</a>
         {% elif code == 6 %}
