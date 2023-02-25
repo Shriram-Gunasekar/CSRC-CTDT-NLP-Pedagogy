@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Evaluator</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Evaluator</h1>
+        <p>Enter your expression:</p>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <input type="file" name="answer" id="answer">
+            <input type="file" name="key" id="key">
+            <button type="submit">Evaluate</button>
+        </form>
+        <h1>Scores</h1>
+        <p>Your Semantic Similarity Transformer Score : {{ semscore }}</p>
+        <p>Your Jaccard Score : {{ jaccscore }} </p>
+        <p>Your Simply Cosine Score : {{ cosinescore }}</p>
+        <p>Your Euclidean Score: {{ eucscore }}</p>
+        <p>Your Manhattan Score: {{ manscore }}</p>
+    </body>
+</html>

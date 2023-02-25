@@ -62,10 +62,11 @@ def evaluator():
             os.remove(theirpdf.filename)
             os.remove(checkpdf.filename)
             semscore = plagresult(theirpdfdata,checkpdfdata)
-            jaccscore = result(theirpdfdata,checkpdfdata)[0]
-            cosinescore = result(theirpdfdata,checkpdfdata)[1]
-            eucscore = result(theirpdfdata,checkpdfdata)[2]
-            manscore = result(theirpdfdata,checkpdfdata)[3]
+            scores = result(theirpdfdata,checkpdfdata)
+            jaccscore = scores[0]
+            cosinescore = scores[1]
+            eucscore = scores[2]
+            manscore = scores[3]
             return render_template('evaluator.html', user=current_user, semscore=semscore, jaccscore=jaccscore, cosinescore=cosinescore, eucscore=eucscore, manscore=manscore)
     return render_template('evaluator.html', user=current_user, simscore="")
 
