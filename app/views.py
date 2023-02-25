@@ -62,6 +62,7 @@ def evaluator():
             os.remove(theirpdf.filename)
             os.remove(checkpdf.filename)
             semscore = plagresult(theirpdfdata,checkpdfdata)
+            semscore = round(semscore.item()*100, 2)
             scores = result(theirpdfdata,checkpdfdata)
             jaccscore = scores[0]
             cosinescore = scores[1]
