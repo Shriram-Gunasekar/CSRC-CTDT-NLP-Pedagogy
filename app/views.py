@@ -1,6 +1,6 @@
 from . import db
 from .models import Account
-
+from .eval import result
 from . import qamodel
 from . import summarymodel
 from . import semsimmodel
@@ -46,6 +46,29 @@ def dashboard():
     return render_template('dashboard.html', user=current_user,response='', code='')
 
 # General Services
+@views.route('/evaluator', methods=['GET', 'POST'])
+@login_required
+def evaluator():
+    if request.method == 'POST':
+        theirpdf = request.files['answer']
+        checkpdf = request.files['key']
+        if theirpdf and checkpdf:
+            theirpdf.save(theirpdf.filename)
+            checkpdf.save(checkpdf.filename)
+            theirpdfdata = PdfReader(theirpdf.filename)
+            checkpdfdata = PdfReader(checkpdf.filename)
+            theirpdfdata = ''.join([theirpdfdata.pages[i].extract_text() for i in range(len(theirpdfdata.pages))])
+            checkpdfdata = ''.join([checkpdfdata.pages[i].extract_text() for i in range(len(checkpdfdata.pages))])
+            os.remove(theirpdf.filename)
+            os.remove(checkpdf.filename)
+            semscore = plagresult(theirpdfdata,checkpdfdata)
+            jaccscore = result(theirpdfdata,checkpdfdata)[0]
+            cosinescore = result(theirpdfdata,checkpdfdata)[1]
+            eucscore = result(theirpdfdata,checkpdfdata)[2]
+            manscore = result(theirpdfdata,checkpdfdata)[3]
+            return render_template('evaluator.html', user=current_user, semscore=semscore, jaccscore=jaccscore, cosinescore=cosinescore, eucscore=eucscore, manscore=manscore)
+    return render_template('evaluator.html', user=current_user, simscore="")
+
 
 @views.route('/plagsim', methods=['GET','POST'])
 @login_required
