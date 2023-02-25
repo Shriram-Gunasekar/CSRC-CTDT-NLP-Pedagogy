@@ -11,8 +11,6 @@ from . import profilemodel
 from . import geometryvectorizer
 from . import gradevectorizer
 from . import profilevectorizer
-from . import convoclassifier
-from . import convovectorizer
 
 from flask_login import login_required, current_user
 from flask import Blueprint, render_template, request, flash, redirect, url_for
@@ -43,8 +41,9 @@ def dashboard():
             scores.append(plagresult(message,i))
         answer = responses[scores.index(max(scores))]
         code = scores.index(max(scores))
+        print(type(code))
         return render_template('dashboard.html', user=current_user, response=answer, code=code)
-    return render_template('dashboard.html', user=current_user)
+    return render_template('dashboard.html', user=current_user,response='', code='')
 
 # General Services
 

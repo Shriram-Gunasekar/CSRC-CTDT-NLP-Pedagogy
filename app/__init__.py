@@ -15,8 +15,6 @@ profilemodel = pickle.load(open('profilemodel','rb'))
 geometryvectorizer = pickle.load(open('geometryvectorizer','rb'))
 gradevectorizer = pickle.load(open('gradevectorizer','rb'))
 profilevectorizer = pickle.load(open('profilevectorizer','rb'))
-convoclassifier = pickle.load(open('convoclassifier','rb'))
-convovectorizer = pickle.load(open('convovectorizer','rb'))
 
 db = SQLAlchemy()
 
