@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="machine.css">
         <title> Machining </title>
         <meta charset="utf-8">
     </head>
     <body>
-        <h1> Machining Recommendation Services </h1>
-        <h2> Select The Data And Input Your Query </h2>
-        <form action="" method="POST">
-            <label for="option"></label>
-            <select id="option" name="option">
-                <option value="insertgrade">Insert Grade</option>
-                <option value="insertgeometry">Insert Geometry</option>
-                <option value="insertprofile">Insert Profile</option>
-            </select>
-            <label for="query">Enter Description</label>
-            <input type="text" id="query" name="query" placeholder="Enter your material requirements">
-            <button type="submit">Submit</button>
-        </form>
-        <h2>Your Insert Material Recommendation Appears Here</h2>
-        <div>
-            <p> Your Recommendation : {{ answer }} </p>
+        <h1 class="center"> Machining Recommendation Services </h1>
+        <div class="box">
+            <form action="" method="POST">
+                <label for="standard-select"><h3 style="font-size:18px;text-align:center">Choose your service</h3></label>
+                <div class="select">
+                    <select id="option" name="option">
+                        <option value="insertgrade">Insert Grade</option>
+                        <option value="insertgeometry">Insert Geometry</option>
+                        <option value="insertprofile">Insert Profile</option>
+                    </select>
+                    <span class="focus"></span>
+                </div>
+                <br>
+                <div id="body" class="input-container" style="width:400px;">
+                    <br>
+                    <textarea name="query" rows="10" cols="46" id="query" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
+                    <br>
+                    <label for="query"><h3 style="font-size:18px;text-align:center">Enter your material requirements</h3></label> 
+                </div>
+                <div id="body" class="input-container" style="width:400px;">
+                    <p></p>
+                    <button type="submit" class="btn" text-align="center">Submit</button>
+                </div>
+            </form>
         </div>
+        <div class="boxe">
+            <h2>Your Material Recommendation Appears Here</h2>
+            <div>
+                <p> Your Recommendation : {{ answer }} </p>
+            </div>
+        </div>
+        <button type="dash" class="dash" text-align="center">
+            Return to Dashboard
+        </button>
     </body>
 </html>
