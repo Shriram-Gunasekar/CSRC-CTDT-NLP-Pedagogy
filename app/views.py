@@ -1,6 +1,7 @@
 from . import db
 from .models import Account
 from .eval import result
+
 from . import qamodel
 from . import summarymodel
 from . import semsimmodel
@@ -39,9 +40,9 @@ def dashboard():
         scores = []
         for i in responses:
             scores.append(plagresult(message,i))
+            print(i)
         answer = responses[scores.index(max(scores))]
         code = scores.index(max(scores))
-        print(type(code))
         return render_template('dashboard.html', user=current_user, response=answer, code=code)
     return render_template('dashboard.html', user=current_user,response='', code='')
 
