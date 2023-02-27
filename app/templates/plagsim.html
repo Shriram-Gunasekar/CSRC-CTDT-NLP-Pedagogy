@@ -86,16 +86,16 @@
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
                 border-radius:5px;
-                padding:22px 100px;
+                padding:22px 60px;
             }
             .boxe{
                 position:absolute;
                 left: 75%;
-                top: 65%;
+                top: 40%;
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
                 border-radius:5px;
-                padding:200px 200px;
+                padding:20px 20px;
             }
             .center{
                 text-align: center;
@@ -138,7 +138,7 @@
             }
             .btn{
                 color:#fff;
-                background-color:#e74c3c;
+                background-color:#FE7984;
                 outline: none;
                 border: 0;
                 color: #fff;
@@ -167,7 +167,7 @@
             }*/
             .btn:hover{
                 background-color:#fff;
-                color:#e74c3c;
+                color:#FE7984;
                 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
             }
             textarea{
@@ -198,12 +198,12 @@
             textarea:focus {
                 background: none repeat scroll 0 0 #1d1d1d2c;
                 outline-width: 0;
-                border:1px solid #e74c3c;
+                border:1px solid #FE7984;
                 outline:none;
             }
             .dash{
                 color:#fff;
-                background-color:#e74c3c;
+                background-color:#B44578;
                 outline: none;
                 border: 0;
                 color: #fff;
@@ -224,7 +224,7 @@
             }
             .dash:hover{
                 background-color:#fff;
-                color:#e74c3c;
+                color:#B44578;
                 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
             }
         </style>
@@ -242,13 +242,11 @@
                     <br>
                     <textarea rows="5" cols="46" id="theirplagtext" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
                 </div>
-                <br>
                 <div id="body" class="input-container" style="width:400px;">
                     <label for="checkplagtext"><h2 style="font-size:17px">Enter The Data To Be Compared With</h2></label>
                     <br>
                     <textarea rows="5" cols="46" id="checkplagtext" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
                 </div>
-                
                 <div id="body" class="input-container" style="width:400px;">
                     <p></p>
                     <button type="submit" class="btn" text-align="center"> Submit </button>
@@ -259,12 +257,14 @@
         <div class="boxe">    
             <div id="body" class="input-container" style="width:400px;">
                 <p></p>
-                <h1> The Similarity Score Will Be Displayed Here</h1>
+                <h2 style="text-align:center"> The Similarity Score Will Be Displayed Here</h2>
                 <p> {{ simscore }} </p>
             </div>
         </div>
-        <button type="dash" class="dash" text-align="center">
-            Return to Dashboard
-        </button>
+        <a href=></a>
+            <button type="dash" class="dash" text-align="center"><!--Link to chooseser.html-->
+                <h4>Return to Dashboard</h4>
+            </button>
+        </a>
     </body>
 </html>
