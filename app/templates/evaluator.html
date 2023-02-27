@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="eval.css">
         <title>Evaluator</title>
         <meta charset="utf-8">
     </head>
     <body>
-        <h1>Evaluator</h1>
-        <p>Enter your expression:</p>
-        <form action="" method="POST" enctype="multipart/form-data">
-            <input type="file" name="answer" id="answer">
-            <input type="file" name="key" id="key">
-            <button type="submit">Evaluate</button>
-        </form>
-        <h1>Scores</h1>
-        <p>Your Semantic Similarity Transformer Score : {{ semscore }}</p>
-        <p>Your Jaccard Score : {{ jaccscore }} </p>
-        <p>Your Simply Cosine Score : {{ cosinescore }}</p>
-        <p>Your Euclidean Score: {{ eucscore }}</p>
-        <p>Your Manhattan Score: {{ manscore }}</p>
+        <h1>EVALUATOR</h1>
+        <div class="box">
+            <p>Enter your expression:</p>
+            <form action="" method="POST" enctype="multipart/form-data">
+                <input type="file" id="answer" name="theirpdf" class="custom-file-input">
+                <br>
+                <br>
+                <input type="file" id="key" name="key" class="custom-file-input">
+                <div id="body" class="input-container" style="width:400px;">
+                    <p></p>
+                    <button type="submit" class="btn" text-align="center">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="boxe">
+            <h1>Scores</h1>
+            <p>Your Semantic Similarity Transformer Score : {{ semscore }}</p>
+            <p>Your Jaccard Score : {{ jaccscore }} </p>
+            <p>Your Simply Cosine Score : {{ cosinescore }}</p>
+            <p>Your Euclidean Score: {{ eucscore }}</p>
+            <p>Your Manhattan Score: {{ manscore }}</p>
+        </div>
+        <button type="dash" class="dash" text-align="center">
+            Return to Dashboard
+        </button>
     </body>
 </html>
