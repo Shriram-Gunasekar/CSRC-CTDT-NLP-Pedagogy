@@ -267,6 +267,7 @@
         
         <div class="boxe">
             <h2 style="font-size:17px"> Your Answers Will Appear In Order Of Questions Below </h2>
+            {% if answer %}
             <table>
             <tr>
                 <th>Your Question</th>
@@ -281,6 +282,7 @@
             </tr>
             {% endfor %}
             </table>
+            {% endif %}
         </div>
         <a href=></a>
             <button type="dash" class="dash" text-align="center"><!--Link to chooseser.html-->

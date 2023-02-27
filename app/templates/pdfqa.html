@@ -91,7 +91,7 @@
             .boxe{
                 position:absolute;
                 left: 75%;
-                top: 52%;
+                top: 53%;
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
                 border-radius:5px;
@@ -304,6 +304,7 @@
         </div>
         <div class="boxe">
             <h3 style="font-size:17px">Result</h3>
+            {% if answers %}
             <table>
                 <tr>
                     <th>Your Question</th>
@@ -318,6 +319,7 @@
                 </tr>
                 {% endfor %}
             </table>
+            {% endif %}
             <p> If the provided answer is not to your satisfaction, please provide more data </p>
             <p> The Confidence Score Will Displayed Next To The Answer </p>
         </div>

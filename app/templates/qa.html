@@ -91,7 +91,7 @@
             .boxe{
                 position:absolute;
                 left: 75%;
-                top: 53%;
+                top: 50%;
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
                 border-radius:5px;
@@ -254,6 +254,7 @@
         </div>
         <div class="boxe">
             <h2 style="text-align:center"> Your Answers Will Appear In Order Of Questions Below </h2>
+            {% if answers %}
             <table>
                 <tr>
                     <th>Your Question</th>
@@ -268,8 +269,8 @@
                 </tr>
                 {% endfor %}
             </table>
+            {% endif %}
             <p> If the provided answer is not to your satisfaction, please provide more data </p>
-            <p> The Confidence Score Will Displayed Next To The Answer </p>
         </div>
         <a href=></a>
             <button type="dash" class="dash" text-align="center"><!--Link to chooseser.html-->

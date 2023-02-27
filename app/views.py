@@ -31,10 +31,15 @@ vectorizer = CountVectorizer(binary=True)
 
 views = Blueprint('views', __name__, url_defaults=None, root_path=None ) #template_folder not specified
 
-# Dashboard
-@views.route('/', methods=['GET', 'POST'])
+@views.route('/dashboard', methods=['GET','POST'])
 @login_required
 def dashboard():
+    return render_template('chooseser.html')
+
+# Dashboard
+@views.route('/queries', methods=['GET', 'POST'])
+@login_required
+def queries():
     if request.method == 'POST':
         message = request.form.get('message')
         scores = []
@@ -70,7 +75,7 @@ def evaluator():
             eucscore = scores[2]
             manscore = scores[3]
             return render_template('evaluator.html', user=current_user, semscore=semscore, jaccscore=jaccscore, cosinescore=cosinescore, eucscore=eucscore, manscore=manscore)
-    return render_template('evaluator.html', user=current_user, simscore="")
+    return render_template('evaluator.html', user=current_user, semscore='', jaccscore='', cosinescore='', eucscore='', manscore='')
 
 
 @views.route('/plagsim', methods=['GET','POST'])

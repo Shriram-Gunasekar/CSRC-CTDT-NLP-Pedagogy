@@ -91,7 +91,7 @@
             .boxe{
                 position:absolute;
                 left: 71%;
-                top: 69.5%;
+                top: 78%;
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
                 border-radius:5px;
@@ -300,11 +300,14 @@
         </div>
         <div class="boxe">
             <h2 style="text-align:center">Scores</h2>
+            {% if semscore %}
+            <h1>Scores</h1>
             <p>Your Semantic Similarity Transformer Score : {{ semscore }}</p>
             <p>Your Jaccard Score : {{ jaccscore }} </p>
             <p>Your Simply Cosine Score : {{ cosinescore }}</p>
             <p>Your Euclidean Score: {{ eucscore }}</p>
             <p>Your Manhattan Score: {{ manscore }}</p>
+            {% endif %}
         </div>
         <a href=></a>
             <button type="dash" class="dash" text-align="center"><!--Link to chooseser.html-->
