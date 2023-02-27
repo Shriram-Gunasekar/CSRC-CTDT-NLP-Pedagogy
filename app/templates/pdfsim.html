@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="simpdf.css">
         <title>Plagiarism Checker Via Similarity</title>
         <meta charset="utf-8">
     </head>
     <body>
-        <h1>Upload Your Files Below</h1>
-        <form action="" method="POST" enctype="multipart/form-data">
-            <label for="theirpdf">Upload Your Original File</label>
-            <input type="file" id="theirpdf" name="theirpdf">
-            <label for="checkpdf">Upload The File To Be Compared With</label>
-            <input type="file" id="checkpdf" name="checkpdf">
-            <button type="submit">Submit</button>
-        </form>
-        <h2>Result</h2>
-        <p> Similarity Score {{ simscore }} </p>
+        <h1>PLAGIARISM CHECKER VIA PDF FILES</h1>
+        <div class="box">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <label for="theirpdf"><h3 style="font-size:18px;text-align:center">Upload Your Original File</h3></label>
+                <input type="file" id="theirpdf" name="theirpdf" class="custom-file-input">
+                <br>
+                <label for="checkpdf"><h3 style="font-size:18px;text-align:center">Upload the file to be compared with</h3></label>
+                <input type="file" id="checkpdf" name="checkpdf" class="custom-file-input">
+                <div id="body" class="input-container" style="width:400px;">
+                    <p></p>
+                    <button type="submit" class="btn" text-align="center">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="boxe">
+            <h2>Result</h2>
+            <p> Similarity Score {{ simscore }} </p>
+        </div>
+        <button type="dash" class="dash" text-align="center">
+            Return to Dashboard
+        </button>
     </body>
 </html>

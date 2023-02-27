@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="sumpdf.css">
         <meta charset="utf-8">
         <title>PDF Summarizer</title>
     </head>
     <body>
         <h1>PDF Summarizer</h1>
-        <form action="" method="POST" enctype="multipart/form-data">
-            <label for="theirpdf">Upload Your File</label>
-            <input type="file" id="theirpdf" name="theirpdf">
-            <label for="textsentences">Number of Sentences</label>
-            <input type="number" id="textsentences" name="textsentences">
-            <button type="submit">Submit</button>
-        </form>
-        <h2>Result</h2>
-        <p> {{ textsummary }} </p>
+        <div class="box">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <label for="theirpdf"><h3 style="font-size:18px;text-align:center">Upload Your File</h3></label>
+                <input type="file" id="theirpdf" name="theirpdf" class="custom-file-input">
+                <br>
+                <div id="body" class="input-container" style="width:400px;">
+                    <br>
+                    <label for="textsentences"><h2 style="font-size:17px">Enter number of summarized sentences</h2></label> 
+                    <br>
+                    <input id="textsentences" style="width:400px" type="number" required=" " wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true">
+                    <br>
+                </div>
+                <br>
+                <div id="body" class="input-container" style="width:400px;">
+                    <p></p>
+                    <button type="submit" class="btn" text-align="center">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="boxe">
+            <h2>Result</h2>
+            <p> {{ textsummary }} </p>
+        </div>
+        <button type="dash" class="dash" text-align="center">
+            Return to Dashboard
+        </button>
     </body>
 </html>

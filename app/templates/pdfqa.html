@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="qapdf.css">
         <title>Question Answering Via PDF</title>
         <meta charset="utf-8">
     </head>
     <body>
-        <h1>Upload Your Files Below</h1>
-        <form action="" method="POST" enctype="multipart/form-data">
-            <label for="pdf">Upload Your PDF File</label>
-            <input type="file" id="theirpdf" name="theirpdf">
-            <label for="theirqas">Enter Your Questions Seperated By Semicolon</label>
-            <input type="text" id="theirqas" name="theirqas">
-            <button type="submit">Submit</button>
-        </form>
-        <h2>Result</h2>
-        <table>
-            <tr>
-                <th>Your Question</th>
-                <th>Answer</th>
-                <th>Confidence Score</th>
-            </tr>
-            {% for i in answers %}
-            <tr>
-                <td>{{i[0]}}</td>
-                <td>{{i[1]}}</td>
-                <td>{{i[2]}} </td>
-            </tr>
-            {% endfor %}
-        </table>
-        <p> If the provided answer is not to your satisfaction, please provide more data </p>
-        <p> The Confidence Score Will Displayed Next To The Answer </p>
+        <h1>QUERIES USING PDF</h1>
+        <div class="box">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <label for="pdf"><h3 style="font-size:18px;text-align:center">Upload Your PDF File</h3></label>
+                <input type="file" id="theirpdf" name="theirpdf" class="custom-file-input">
+                <br>
+                <div id="body" class="input-container" style="width:400px;">
+                    <br>
+                    <textarea name="query" rows="10" cols="46" id="query" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
+                    <br>
+                    <label for="query"><h3 style="font-size:18px;text-align:center">Enter your queries separated by semicolons</h3></label> 
+                </div>
+                <div id="body" class="input-container" style="width:400px;">
+                    <p></p>
+                    <button type="submit" class="btn" text-align="center">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="boxe">
+            <h3 style="font-size:17px">Result</h3>
+            <table>
+                <tr>
+                    <th>Your Question</th>
+                    <th>Answer</th>
+                    <th>Confidence Score</th>
+                </tr>
+                {% for i in answers %}
+                <tr>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+                    <td>{{i[2]}} </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <p> If the provided answer is not to your satisfaction, please provide more data </p>
+            <p> The Confidence Score Will Displayed Next To The Answer </p>
+        </div>
+        <button type="dash" class="dash" text-align="center">
+            Return to Dashboard
+        </button>
+    </body>
 </html>

@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="dash.css">
         <meta charset="utf-8">
         <title>CTDT Project</title>
     </head>
     <body>
-        <h1> Welcome To AltGPT </h1>
-        <h1>Dashboard</h1>
-        <p>Here is the dashboard</p>
-        <p>Here is the navlink</p>
-        <h1> Here is your chatbox </h1>
-        <p>Here is the chatbox</p>
-        <form action="" method="POST">
-            <label for="message">Enter your query</label>
-            <input type="text" name="message" id="message" placeholder="Enter your message">
-            <button type="submit" value="submit">Submit</button>
-        </form>
-        <h1> ALTGPT Response </h1>
-        <p>Here is the response</p>
-        <p> {{ response }} </p>
-        {% if code == 4 %}
-            <a href="{{ url_for('views.pdfsum') }}">File Summarizer</a>
-        {% elif code == 5 %}
-            <a href="{{ url_for('views.bertsum') }}">Text Summarizer</a>
-        {% elif code == 7 %}
-            <a href="{{ url_for('views.plagsim') }}">Text Similarity</a>
-        {% elif code == 6 %}
-            <a href="{{ url_for('views.pdfsim') }}">File Similarity</a>
-        {% elif code == 9 %}
-        <a href="{{ url_for('views.qa') }}">Text Q&A</a>
-        {% elif code == 8 %}
-            <a href="{{ url_for('views.pdfqa') }}">File Q&A</a>
-        {% elif code == 10 %}
-            <a href="{{ url_for('views.qaentomology') }}">Entomology</a>
-        {% elif code == 13 %}
-            <a href="{{ url_for('views.machining') }}">Machining</a>
-        {% else %}
-            <p></p>
-        {% endif %}
-        <a class="nav-item nav-link" id="logout" href="{{ url_for('sign.logout') }}">Logout</a>
+        <nav>
+            <div class="menu">
+              <div class="logo">
+                <a href="#">AltGPT</a>
+              </div>
+              <ul>
+                <li><a href="evaluator.html">Evaluator</a></li>
+                <li><a href="machining.html">Machining</a></li>
+                <li><a href="plagsim.html">Plagiarism Checker</a></li></menuitem>
+                <li><a href="bertsum.html">Summarizer</a></li>
+                <li><a href="qa.html">Q&A</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="create_account.html">Create Account</a></li>
+              </ul>
+            </div>
+        </nav>
+        <div class="img"></div>
+            <div class="center">
+                <div class="title">Welcome to AltGPT</div>
+                <div class="sub_title">Your No.1 Pedagogical Chatbot</div>
+                <div class="btns">
+                <button>Learn More</button>
+                <button>Queries?</button>
+            </div>
+        </div>
     </body>
 </html>
