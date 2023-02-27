@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title> Query Page </title>
+        <meta charset="utf-8">
+    </head>
+    <body>
     <h1> Here is your chatbox </h1>
             <form action="" method="POST">
                 <label for="message">Enter your query</label>
@@ -28,4 +33,8 @@
     {% else %}
         <p></p>
     {% endif %}
+    <button type="dash" class="dash" text-align="center">
+        <a href="{{ url_for('views.dashboard') }}">Return to Dashboard</a>
+    </button>
+    </body>
 </html>

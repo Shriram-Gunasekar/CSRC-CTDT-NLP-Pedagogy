@@ -283,15 +283,17 @@
             </form>
         </div>
         <div class="boxe">
+            {% if semscore %}
             <h1>Scores</h1>
             <p>Your Semantic Similarity Transformer Score : {{ semscore }}</p>
             <p>Your Jaccard Score : {{ jaccscore }} </p>
             <p>Your Simply Cosine Score : {{ cosinescore }}</p>
             <p>Your Euclidean Score: {{ eucscore }}</p>
             <p>Your Manhattan Score: {{ manscore }}</p>
+            {% endif %}
         </div>
         <button type="dash" class="dash" text-align="center">
-            Return to Dashboard
+            <a href="{{ url_for('views.dashboard') }}">Return to Dashboard</a>
         </button>
     </body>
 </html>

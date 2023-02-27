@@ -258,13 +258,15 @@
             </form>
         </div>
         <div class="boxe">
-            <h2>Your Material Recommendation Appears Here</h2>
+            <h2>Your Material Recommendation Will Appear Below</h2>
+            {% if answer %}
             <div>
                 <p> Your Recommendation : {{ answer }} </p>
             </div>
+            {% endif %}
         </div>
         <button type="dash" class="dash" text-align="center">
-            Return to Dashboard
+            <a href="{{ url_for('views.dashboard') }}">Return to Dashboard</a>
         </button>
     </body>
 </html>

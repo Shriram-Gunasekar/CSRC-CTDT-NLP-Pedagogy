@@ -5,6 +5,10 @@ from flask_login import login_user, login_required, logout_user, current_user
 
 sign = Blueprint('sign', __name__,url_defaults=None, root_path=None) #template_folder not specified
 
+@sign.route('/', methods=['GET', 'POST'])
+def frontpage():
+    return render_template('dashboard.html')
+
 @sign.route('/login', methods=['GET', 'POST'])
 def login():
     '''

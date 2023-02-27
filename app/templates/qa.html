@@ -254,6 +254,7 @@
         </div>
         <div class="boxe">
             <h1> Your Answers Will Appear In Order Of Questions Below </h1>
+            {% if answers %}
             <table>
                 <tr>
                     <th>Your Question</th>
@@ -268,11 +269,11 @@
                 </tr>
                 {% endfor %}
             </table>
+            {% endif %}
             <p> If the provided answer is not to your satisfaction, please provide more data </p>
-            <p> The Confidence Score Will Displayed Next To The Answer </p>
         </div>
         <button type="dash" class="dash" text-align="center">
-            Return to Dashboard
+            <a href="{{ url_for('views.dashboard') }}">Return to Dashboard</a>
         </button>
     </body>
 </html>

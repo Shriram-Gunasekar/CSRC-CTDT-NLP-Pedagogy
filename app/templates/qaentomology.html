@@ -267,6 +267,7 @@
         
         <div class="boxe">
             <h3 style="font-size:17px"> Your Answers Will Appear In Order Of Questions Below </h3>
+            {% if answer %}
             <table>
             <tr>
                 <th>Your Question</th>
@@ -281,9 +282,10 @@
             </tr>
             {% endfor %}
             </table>
+            {% endif %}
         </div>
         <button type="dash" class="dash" text-align="center">
-            Return to Dashboard
+            <a href="{{ url_for('views.dashboard') }}">Return to Dashboard</a>
         </button>
     </body>
 </html>

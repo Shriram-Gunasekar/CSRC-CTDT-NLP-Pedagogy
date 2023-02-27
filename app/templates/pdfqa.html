@@ -288,6 +288,7 @@
         </div>
         <div class="boxe">
             <h3 style="font-size:17px">Result</h3>
+            {% if answers %}
             <table>
                 <tr>
                     <th>Your Question</th>
@@ -302,11 +303,12 @@
                 </tr>
                 {% endfor %}
             </table>
+            {% endif %}
             <p> If the provided answer is not to your satisfaction, please provide more data </p>
             <p> The Confidence Score Will Displayed Next To The Answer </p>
         </div>
         <button type="dash" class="dash" text-align="center">
-            Return to Dashboard
+            <a href="{{ url_for('views.dashboard') }}">Return to Dashboard</a>
         </button>
     </body>
 </html>
