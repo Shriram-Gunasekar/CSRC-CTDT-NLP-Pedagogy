@@ -1,6 +1,5 @@
 from . import db
 from .models import Account
-from .eval import result
 from random import randint
 from . import qamodel
 from . import summarymodel
@@ -69,13 +68,8 @@ def evaluator():
             os.remove(checkpdf.filename)
             semscore = plagresult(theirpdfdata,checkpdfdata)
             semscore = round(semscore.item()*100, 2)
-            scores = result(theirpdfdata,checkpdfdata)
-            jaccscore = scores[0]
-            cosinescore = scores[1]
-            eucscore = scores[2]
-            manscore = scores[3]
-            return render_template('evaluator.html', user=current_user, semscore=semscore, jaccscore=jaccscore, cosinescore=cosinescore, eucscore=eucscore, manscore=manscore)
-    return render_template('evaluator.html', user=current_user, semscore='', jaccscore='', cosinescore='', eucscore='', manscore='')
+            return render_template('evaluator.html', user=current_user, semscore=semscore)
+    return render_template('evaluator.html', user=current_user, semscore='')
 
 
 @views.route('/plagsim', methods=['GET','POST'])
