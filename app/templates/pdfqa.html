@@ -82,7 +82,7 @@
             .box{
                 position:absolute;
                 left:28%;
-                top: 70%;
+                top: 74%;
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
                 border-radius:5px;
@@ -91,11 +91,11 @@
             .boxe{
                 position:absolute;
                 left: 75%;
-                top: 65%;
+                top: 53%;
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
                 border-radius:5px;
-                padding:200px 200px;
+                padding:20px 200px;
             }
             .center{
                 text-align: center;
@@ -133,12 +133,12 @@
                 color:#fff;
             }
             .input-container input:focus{ 
-                border:1px solid #e74c3c;
+                border:1px solid #FE7984;
                 outline:none;	
             }
             .btn{
                 color:#fff;
-                background-color:#e74c3c;
+                background-color:#FE7984;
                 outline: none;
                 border: 0;
                 color: #fff;
@@ -189,7 +189,7 @@
                 line-height: 1.4em;
                 padding: 5px 8px;
                 transition: background-color 0.2s ease 0s;
-                outline: #e74c3c;
+                outline: #FE7984;
                 resize: none;
                 overflow: none;
                 border:1px solid #ffffff;
@@ -198,12 +198,12 @@
             textarea:focus {
                 background: none repeat scroll 0 0 #1d1d1d2c;
                 outline-width: 0;
-                border:1px solid #e74c3c;
+                border:1px solid #FE7984;
                 outline:none;
             }
             .dash{
                 color:#fff;
-                background-color:#e74c3c;
+                background-color:#B44578;
                 outline: none;
                 border: 0;
                 color: #fff;
@@ -224,7 +224,7 @@
             }
             .dash:hover{
                 background-color:#fff;
-                color:#e74c3c;
+                color:#B44578;
                 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
             }
             .custom-file-input {
@@ -263,16 +263,32 @@
               body {
                 padding: 20px;
             }
+            input[type="file"] {
+                background: none repeat scroll 0 0 #FE7984;
+                border-color: #FE7984;
+                border-radius: 10px 10px 10px 10px;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: 1px 1px 3px #333333;
+                color: #FFFFFF;
+                cursor: pointer;
+                font-weight: bold;
+                padding: 5px;
+                text-align: center;
+                text-shadow: 1px 1px 1px #000000;
+              }
         </style>
         <title>Question Answering Via PDF</title>
         <meta charset="utf-8">
     </head>
     <body>
-        <h1>QUERIES USING PDF</h1>
+        <h1 class="center">QUERIES USING PDF</h1>
         <div class="box">
             <form action="" method="POST" enctype="multipart/form-data">
                 <label for="pdf"><h3 style="font-size:18px;text-align:center">Upload Your PDF File</h3></label>
-                <input type="file" id="theirpdf" name="theirpdf" class="custom-file-input">
+                <center>
+                    <input type="file" id="theirpdf" name="theirpdf" class="custom-file-input">
+                </center>
                 <br>
                 <div id="body" class="input-container" style="width:400px;">
                     <br>
@@ -307,8 +323,10 @@
             <p> If the provided answer is not to your satisfaction, please provide more data </p>
             <p> The Confidence Score Will Displayed Next To The Answer </p>
         </div>
-        <button type="dash" class="dash" text-align="center">
-            <a href="{{ url_for('views.dashboard') }}">Return to Dashboard</a>
-        </button>
+        <a href=></a>
+            <button type="dash" class="dash" text-align="center"><!--Link to chooseser.html-->
+                <h4>Return to Dashboard</h4>
+            </button>
+        </a>
     </body>
 </html>

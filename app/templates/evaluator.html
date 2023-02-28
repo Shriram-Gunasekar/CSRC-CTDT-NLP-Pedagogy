@@ -81,26 +81,26 @@
             }
             .box{
                 position:absolute;
-                left:28%;
-                top: 70%;
+                left:23%;
+                top: 53%;
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
                 border-radius:5px;
-                padding:22px 100px;
+                padding:1px 10px;
             }
             .boxe{
                 position:absolute;
-                left: 75%;
-                top: 65%;
+                left: 71%;
+                top: 78%;
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
                 border-radius:5px;
-                padding:200px 200px;
+                padding:1px 300px;
             }
             .center{
                 text-align: center;
-                font-size:60px;
                 top:10%;
+                font-size:60px;
             }
             .input-container{
                 position:relative;
@@ -133,12 +133,12 @@
                 color:#fff;
             }
             .input-container input:focus{ 
-                border:1px solid #e74c3c;
+                border:1px solid #FE7984;
                 outline:none;	
             }
             .btn{
                 color:#fff;
-                background-color:#e74c3c;
+                background-color:#FE7984;
                 outline: none;
                 border: 0;
                 color: #fff;
@@ -167,7 +167,7 @@
             }*/
             .btn:hover{
                 background-color:#fff;
-                color:#e74c3c;
+                color:#FE7984;
                 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
             }
             textarea{
@@ -198,12 +198,12 @@
             textarea:focus {
                 background: none repeat scroll 0 0 #1d1d1d2c;
                 outline-width: 0;
-                border:1px solid #e74c3c;
+                border:1px solid #FE7984;
                 outline:none;
             }
             .dash{
                 color:#fff;
-                background-color:#e74c3c;
+                background-color:#B44578;
                 outline: none;
                 border: 0;
                 color: #fff;
@@ -224,7 +224,7 @@
             }
             .dash:hover{
                 background-color:#fff;
-                color:#e74c3c;
+                color:#B44578;
                 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
             }
             .custom-file-input {
@@ -263,19 +263,35 @@
               body {
                 padding: 20px;
               }
+              input[type="file"] {
+                background: none repeat scroll 0 0 #FE7984;
+                border-color: #FFFFFF #327CB5 #327CB5 #FFFFFF;
+                border-radius: 10px 10px 10px 10px;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: 1px 1px 3px #333333;
+                color: #FFFFFF;
+                cursor: pointer;
+                font-weight: bold;
+                padding: 5px;
+                text-align: center;
+                text-shadow: 1px 1px 1px #000000;
+              }
         </style>
         <title>Evaluator</title>
         <meta charset="utf-8">
     </head>
     <body>
-        <h1>EVALUATOR</h1>
+        <h1 class="center">EVALUATOR</h1>
         <div class="box">
-            <p>Enter your expression:</p>
+            <h2 style="text-align:center">Upload your files:</h2>
             <form action="" method="POST" enctype="multipart/form-data">
-                <input type="file" id="answer" name="theirpdf" class="custom-file-input">
-                <br>
-                <br>
-                <input type="file" id="key" name="key" class="custom-file-input">
+                <center>
+                    <input type="file" id="answer" name="answer" class="custom-file-input" style="text-align:center">
+                    <br>
+                    <br>
+                    <input type="file" id="key" name="key" class="custom-file-input">
+                </center>
                 <div id="body" class="input-container" style="width:400px;">
                     <p></p>
                     <button type="submit" class="btn" text-align="center">Submit</button>
@@ -283,6 +299,7 @@
             </form>
         </div>
         <div class="boxe">
+            <h2 style="text-align:center">Scores</h2>
             {% if semscore %}
             <h1>Scores</h1>
             <p>Your Semantic Similarity Transformer Score : {{ semscore }}</p>
@@ -292,8 +309,10 @@
             <p>Your Manhattan Score: {{ manscore }}</p>
             {% endif %}
         </div>
-        <button type="dash" class="dash" text-align="center">
-            <a href="{{ url_for('views.dashboard') }}">Return to Dashboard</a>
-        </button>
+        <a href=></a>
+            <button type="dash" class="dash" text-align="center"><!--Link to chooseser.html-->
+                <h4>Return to Dashboard</h4>
+            </button>
+        </a>
     </body>
 </html>
