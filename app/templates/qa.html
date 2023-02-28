@@ -238,11 +238,11 @@
                 <div id="body" class="input-container" style="width:400px;">
                     <label for="theirqatext"><h3 style="font-size:17px">Enter Your Data</h3></label>
                     <br>
-                    <textarea rows="5" cols="46" id="theirqatext" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
+                    <textarea rows="5" cols="46" id="theirqatext" name="theirqatext" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
                 </div>
                 <div id="body" class="input-container" style="width:400px;">
                     <br>
-                    <textarea name="theirqas" rows="5" cols="46" id="theirqas" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
+                    <textarea name="theirqas" rows="5" cols="46" id="theirqas" name="theirqas" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
                     <br>
                     <label for="theirqas"><h3 style="font-size:18px;text-align:center">Enter your queries separated by semicolons</h3></label> 
                 </div>
@@ -263,9 +263,9 @@
                 </tr>
                 {% for i in answers %}
                 <tr>
-                    <td>{{i[0]}}</td>
-                    <td>{{i[1]}}</td>
-                    <td>{{i[2]}} </td>
+                    <td>{{ i[0] }}</td>
+                    <td>{{ i[1] }}</td>
+                    <td>{{ i[2] }} </td>
                 </tr>
                 {% endfor %}
             </table>

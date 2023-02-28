@@ -49,7 +49,7 @@ def queries():
         answer = responses[scores.index(max(scores))]
         code = scores.index(max(scores))
         return render_template('queries.html', user=current_user, response=answer, code=code)
-    return render_template('querieshtml', user=current_user,response='', code='')
+    return render_template('queries.html', user=current_user,response='', code='')
 
 # General Services
 @views.route('/evaluator', methods=['GET', 'POST'])
@@ -160,14 +160,15 @@ def qa():
 def pdfqa():
     if request.method == 'POST':
         theirpdf = request.files['theirpdf']
-        theirqas = request.form.get('theirqas')
+        theirqas = request.form.get('query')
         if theirpdf and theirqas:
             theirpdf.save(theirpdf.filename)
             theirpdfdata = PdfReader(theirpdf.filename)
             theirpdfdata = ''.join([theirpdfdata.pages[i].extract_text() for i in range(len(theirpdfdata.pages))])
             os.remove(theirpdf.filename)
             answers = qaanswers(theirpdfdata, theirqas.split(';'))
-            return render_template('pdfqa.html',user=current_user, answers=answers)
+            print(answers)
+        return render_template('pdfqa.html',user=current_user, answers=answers)
     return render_template('pdfqa.html',user=current_user,answers="")
 
 # Department Services
