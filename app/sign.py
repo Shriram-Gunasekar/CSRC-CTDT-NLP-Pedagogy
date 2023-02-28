@@ -27,7 +27,7 @@ def login():
             flash('Authorization Complete', category='success')
             login_user(visitor, remember=True)
             print('Authorized')
-            return redirect(url_for('views.dashboard'))
+            return redirect(url_for('views.chooseser'))
         
         elif(authenticate(username, password) == False):
             flash('Authorization Failed. Please check your password', category='error')
@@ -63,7 +63,7 @@ def create_account():
             db.session.commit()
             login_user(new_account, remember=True)
             flash('Your account has been created', category='success')
-            return redirect(url_for('views.dashboard'))
+            return redirect(url_for('views.chooseser'))
         
         elif(validate(username,original_password,confirmed_password) == False):
             flash('Constraints Not Satisfied or passwords didn\'t match. Try Again', category='error')
@@ -89,7 +89,7 @@ def authenticate(username, password):
     else:
         return None
     
-def validate(username, alias, original_password, confirmed_password):
+def validate(username, original_password, confirmed_password):
     visitor = Account.query.filter_by(username=username).first()
     if visitor and visitor.username == username:
         return None

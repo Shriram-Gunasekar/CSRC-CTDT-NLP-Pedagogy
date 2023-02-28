@@ -141,8 +141,8 @@
                 <a href="#">AltGPT</a>
               </div>
               <ul>
-                <li><a href="login.html">SIGN IN</a></li><!--Link to login.html-->
-                <li><a href="create_account.html">REGISTER</a></li><!--Link to create_account.html-->
+                <li><a href="{{ url_for('sign.login')}}">SIGN IN</a></li><!--Link to login.html-->
+                <li><a href="{{ url_for('sign.create_account')}}">REGISTER</a></li><!--Link to create_account.html-->
               </ul>
             </div>
         </nav>
@@ -151,8 +151,8 @@
                 <div class="title">Welcome to AltGPT</div>
                 <div class="sub_title">Your No.1 Pedagogical Chatbot</div>
                 <div class="btns">
-                <button><a href={{ url_for('sign.aboutalt')}}></a>Learn More</button> <!--Link to aboutalt.html-->
-                <button><a href="{{ url_For('views.queries') }}"></button> <!--Link to queries.html-->
+                <button><a href="{{ url_for('sign.aboutalt')}}">Learn More</a></button> <!--Link to aboutalt.html-->
+                <button><a href="{{ url_for('views.queries') }}">Queries?</a></button> <!--Link to queries.html-->
             </div>
         </div>
     </body>

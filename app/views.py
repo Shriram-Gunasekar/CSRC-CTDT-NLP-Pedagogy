@@ -107,7 +107,8 @@ def pdfsim():
             checkpdfdata = ''.join([checkpdfdata.pages[i].extract_text() for i in range(len(checkpdfdata.pages))])
             os.remove(theirpdf.filename)
             os.remove(checkpdf.filename)
-            simscore = plagresult(theirpdfdata,checkpdfdata)        
+            simscore = plagresult(theirpdfdata,checkpdfdata)   
+            simscore = round(simscore.item()*100, 2)     
         return render_template('pdfsim.html', user=current_user, simscore=simscore)
     return render_template('pdfsim.html', user=current_user, simscore="")
 
@@ -117,6 +118,7 @@ def bertsum():
     if request.method == 'POST':
         theirsumtext = request.form.get('theirsumtext')
         textsentences = request.form.get('textsentences')
+        print(theirsumtext, textsentences)
         if theirsumtext:
             textsummary = summarizer(theirsumtext,sentences=textsentences)
         else:
@@ -165,7 +167,7 @@ def pdfqa():
             theirpdfdata = ''.join([theirpdfdata.pages[i].extract_text() for i in range(len(theirpdfdata.pages))])
             os.remove(theirpdf.filename)
             answers = qaanswers(theirpdfdata, theirqas.split(';'))
-        return render_template('pdfqa.html',user=current_user, answers=answers)
+            return render_template('pdfqa.html',user=current_user, answers=answers)
     return render_template('pdfqa.html',user=current_user,answers="")
 
 # Department Services
