@@ -1,7 +1,7 @@
 from . import db
 from .models import Account
 from .eval import result
-
+from random import randint
 from . import qamodel
 from . import summarymodel
 from . import semsimmodel
@@ -199,8 +199,13 @@ def qaentomology():
 @login_required
 def genques():
     if request.method == 'POST':
-        return render_template('genques.html', user=current_user)
-    return render_template('genques.html', user=current_user)
+        data = {
+            'Remember':['Under which phylum do Insects fall under?','How are insects classified?'],
+            'Understand':['What happens when the clitellum of a earthworm is filled with eggs?','What is the function of the clitellum?']
+        }
+        questions = [data['Remember'][randint(0,1)],data['Understand'][randint(0,1)]]
+        return render_template('genques.html', user=current_user, questions=questions)
+    return render_template('genques.html', user=current_user, questions='')
 
 #Model Methods     
 
@@ -235,3 +240,4 @@ def recommender(text, option):
 
 def evaluator(text):
     pass
+

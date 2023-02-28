@@ -104,14 +104,19 @@
     </head>
     <body>
         <h2 class="center">QUESTION GENERATOR</h2>
+        <form action="" method="POST">
         <div class="box">
             <div id="body" class="input-container" style="width:400px;">
                 <label><h3 style="text-align:center">Generate questions here!</h3></label>
-                <p></p><button type="submit" class="btn" text-align="center">Generate!</button>
+                <p></p><button type="submit" name="submit" class="btn" text-align="center">Generate!</button>
             </div>
         </div>
+        </form>
         <div class="boxe">
             <h2 style="text-align:center">Your Generated Questions Appears Here</h2>
+            {% for question in questions %}
+                <p style="text-align:center">{{ question }}</p>
+            {% endfor %}
         </div>
         <a href=></a>
             <button type="dash" class="dash" text-align="center"><!--Link to chooseser.html-->
