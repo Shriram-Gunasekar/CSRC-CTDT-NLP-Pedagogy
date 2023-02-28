@@ -1,8 +1,19 @@
-import tensorflow as tf
-qa_pipeline = tf.keras.models.load_model('QA')
-# import torch
-# qa_pipeline = torch.load('QA')
-results = qa_pipeline({ 'question': "What is machine learning?",
+d = { 'question': "What is machine learning?",
 'context': "Machine learning is a subset of artificial intelligence. It is widely for creating a variety of applications such as email filtering and computer vision"
-})
-print(results)
+}
+
+import torch
+from flask import Flask, request, render_template
+model = torch.load('QA')
+app = Flask(__name__)
+
+@app.route('/', methods=['GET', 'POST'])
+def demo():
+    if request.method == 'POST':
+        text = request.form.get('theirqatext')
+        q = request.form.get('theirqas')
+        answer = model({'question': q, 'context':text})
+        return render_template('qa.html', answer = answer)
+    return render_template('qa.html', answer='Your Answer')
+
+app.run(debug=True, host='0.0.0.0', port=8080)

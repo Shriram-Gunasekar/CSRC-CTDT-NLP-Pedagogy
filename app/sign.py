@@ -6,7 +6,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 sign = Blueprint('sign', __name__,url_defaults=None, root_path=None) #template_folder not specified
 
 @sign.route('/', methods=['GET', 'POST'])
-def frontpage():
+def dashboard():
     return render_template('dashboard.html')
 
 @sign.route('/login', methods=['GET', 'POST'])
@@ -42,7 +42,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('sign.login'))
+    return redirect(url_for('sign.dashboard'))
 
 
 @sign.route('/create_account', methods=['GET', 'POST'])
@@ -72,6 +72,10 @@ def create_account():
             flash('Username taken. Please choose another', category='error')
 
     return render_template("create_account.html", user=current_user)
+
+@sign.route('/aboutalt', methods=['GET','POST'])
+def aboutalt():
+    return render_template('aboutalt.html')
 
 ### Functions to authenticate and validate
 

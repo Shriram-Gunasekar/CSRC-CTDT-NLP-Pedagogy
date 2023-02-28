@@ -169,13 +169,13 @@
         <h1 style="text-align:center"> CHOOSE YOUR SERVICE </h2>
         <div class="box">
             <h2 class="center"> GENERAL SERVICES </h2>
-            <a href='evaluator.html'style="white-space: nowrap"><!--Link to evaluator.html-->
+            <a href='{{ url_for('views.evaluator') }}'style="white-space: nowrap"><!--Link to evaluator.html-->
                 <button class="btn">
                     Evaluator
                 </button>
             </a>
             <br>
-            <a href='machining.html'style="white-space: nowrap"><!--Link to machining.html-->
+            <a href='{{ url_for('views.machining') }}'style="white-space: nowrap"><!--Link to machining.html-->
                 <button class="btn">
                     Machining
                 </button>
@@ -185,8 +185,8 @@
                     Plagiarism Checker
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">PDF input based</a><!--Link to pdfsim.html-->
-                    <a href="#">Text-input based</a><!--Link to plagsim.html-->
+                    <a href="{{ url_for('views.pdfsim') }}">PDF input based</a><!--Link to pdfsim.html-->
+                    <a href="{{ url_for('views.plagsim') }}">Text-input based</a><!--Link to plagsim.html-->
                 </div>
             </div>
             <br>
@@ -195,12 +195,12 @@
                     Q&A
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">PDF input based</a><!--Link to pdfqa.html-->
-                    <a href="#">Text-input based</a><!--Link to qa.html-->
+                    <a href="{{ url_for('views.pdfqa') }}">PDF input based</a><!--Link to pdfqa.html-->
+                    <a href="{{ url_for('views.qa') }}">Text-input based</a><!--Link to qa.html-->
                 </div>
             </div>
             <br>
-            <a href='genques.html'style="white-space: nowrap"><!--Link to genques.html-->
+            <a href='{{ url_for('views.genques') }}'style="white-space: nowrap"><!--Link to genques.html-->
                 <button class="btn">
                     Question Generator
                 </button>
@@ -211,14 +211,14 @@
                     Extractive Summarizer
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">PDF input based</a><!--Link to pdfsum.html-->
-                    <a href="#">Text-input based</a><!--Link to bertsum.html-->
+                    <a href="{{ url_for('views.pdfsum') }}">PDF input based</a><!--Link to pdfsum.html-->
+                    <a href="{{ url_for('views.bertsum') }}">Text-input based</a><!--Link to bertsum.html-->
                 </div>
             </div>
         </div>
         <div class="boxe">
             <h2 class="center" style="white-space: nowrap"> DEPARTMENTAL SERVICES </h2>
-            <a href='qaentomology.html'style="white-space: nowrap"><!--Link to qaentomology.html-->
+            <a href="{{ url_for('views.qaentomology') }}" style="white-space: nowrap"><!--Link to qaentomology.html-->
                 <button class="but">
                     Entomology
                 </button>

@@ -3,10 +3,7 @@
     <head>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-            body {
-                font-family: "Lato", sans-serif;
-                padding-bottom: 100px;
-                margin: 0;
+            body{
                 background-image: url("https://media.giphy.com/media/BHNfhgU63qrks/giphy.gif");
                 background-position: center;
                 background-origin: content-box;
@@ -17,20 +14,42 @@
                 align: center;
                 color:#ffffff;
             }
+            .text-center{
+                color:#fff;	
+                text-transform:uppercase;
+                font-size: 23px;
+                margin: -50px 0 80px 0;
+                display: block;
+                text-align: center;
+                align:center;
+            }
             .box{
                 position:absolute;
-                left:50%;
-                top: 67%;
+                left:25%;
+                top:63%;
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
                 border-radius:5px;
-                padding:22px 150px;
+                padding:5px 100px;
+            }
+            .boxe{
+                position:absolute;
+                left:75%;
+                top:43%;
+                transform: translate(-50%,-50%);
+                background-color: rgba(0, 0, 0, 0.85);
+                border-radius:5px;
+                padding:70px 100px;
+            }
+            .center{
+                text-align: center;
+                font-size:60px;
+                top:10%;
             }
             .input-container{
                 position:relative;
-                margin:50px;
+                margin:30px;
                 align-items: center;
-                right:5px;
             }
             .input-container label{
                 position:absolute;
@@ -38,7 +57,6 @@
                 left:10px;
                 color:#fff;	
                 pointer-event:none;
-                font-size:16px;
                 top: 0;
                 left: 50%;
                 transform: translate(-50%, -50%);
@@ -57,12 +75,12 @@
                 color:#fff;
             }
             .input-container input:focus{ 
-                border:1px solid #FE7984;
+                border:1px solid #e74c3c;
                 outline:none;	
             }
             .btn{
                 color:#fff;
-                background-color:#FE7984;
+                background-color:#e74c3c;
                 outline: none;
                 border: 0;
                 color: #fff;
@@ -91,8 +109,29 @@
             }*/
             .btn:hover{
                 background-color:#fff;
-                color:#FE7984;
+                color:#e74c3c;
                 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+            .center{
+                text-align: center;
+                font-size:60px;
+                top:10%;
+            }
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none; 
+                margin: 0; 
+            }
+            .input[type=number] {
+                border:1px solid #ffffff;
+                border-width:3px; 
+                border-style:solid; 
+                border-radius:3px;            
+                background:transparent;
+                width:100%;
+                padding:8px 0 5px 0;
+                font-size:16px;
+                color:#fff;
             }
             textarea{
                 margin-top: 10px;
@@ -122,12 +161,12 @@
             textarea:focus {
                 background: none repeat scroll 0 0 #1d1d1d2c;
                 outline-width: 0;
-                border:1px solid #FE7984;
+                border:1px solid #e74c3c;
                 outline:none;
             }
             .dash{
                 color:#fff;
-                background-color:#B44578;
+                background-color:#e74c3c;
                 outline: none;
                 border: 0;
                 color: #fff;
@@ -137,8 +176,8 @@
                 border-radius:2px;
                 cursor:pointer;
                 position:relative;
-                top:675px;
-                left:1330px;
+                top:650px;
+                left:1348px;
                 -ms-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
                 width:15%;
@@ -148,59 +187,47 @@
             }
             .dash:hover{
                 background-color:#fff;
-                color:#B44578;
+                color:#e74c3c;
                 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
             }
-            .center{
-                text-align: center;
-                font-size:60px;
-                top:10%;
-            }
         </style>
-        <title>CHATBOT</title>
         <meta charset="utf-8">
+        <title> BERT Extractive Summarizer </title>
     </head>
     <body>
-        <h2 class="center"> CHATBOT </h2>
+        <h1 class="center">EXTRACTIVE SUMMARIZER</h1>
         <div class="box">
             <form action="" method="POST">
+                
                 <div id="body" class="input-container" style="width:400px;">
                     <br>
-                    <textarea name="message" rows="1" cols="46" id="message" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
+                    <textarea rows="10" name="theirsumtext" cols="46" id="theirsumtext" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
                     <br>
-                    <label for="message"><h3 style="font-size:18px;text-align:center">Drop your message here</h3></label> 
+                    <label for="theirsumtext"><h3 style="font-size:17px">Enter the Data</h3></label> 
+                    <br>
                 </div>
+                
                 <div id="body" class="input-container" style="width:400px;">
-                    <p></p><button type="submit" class="btn" text-align="center">Submit</button>
+                    <br>
+                    <label for="textsentences"><h2 style="font-size:17px">Enter number of summarized sentences</h2></label> 
+                    <br>
+                    <input name="textsentences" id="textsentences" style="width:400px" type="number" required=" " wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true">
+                    <br>
+                </div>
+                
+                <div id="body" class="input-container" style="width:400px;">
+                    <p></p>
+                    <button type="submit" class="btn" text-align="center">Submit</button>
                 </div>
             </form>
-            <h2 style="text-align:center"> ALTGPT Response </h2>
-            <p>Here is the response</p>
-            <p> {{ response }} </p>
-            {% if code == 4 %}
-                <a href="{{ url_for('views.pdfsum') }}">File Summarizer</a>
-            {% elif code == 5 %}
-                <a href="{{ url_for('views.bertsum') }}">Text Summarizer</a>
-            {% elif code == 7 %}
-                <a href="{{ url_for('views.plagsim') }}">Text Similarity</a>
-            {% elif code == 6 %}
-                <a href="{{ url_for('views.pdfsim') }}">File Similarity</a>
-            {% elif code == 9 %}
-            <a href="{{ url_for('views.qa') }}">Text Q&A</a>
-            {% elif code == 8 %}
-                <a href="{{ url_for('views.pdfqa') }}">File Q&A</a>
-            {% elif code == 10 %}
-                <a href="{{ url_for('views.qaentomology') }}">Entomology</a>
-            {% elif code == 13 %}
-                <a href="{{ url_for('views.machining') }}">Machining</a>
-            {% else %}
+        </div>
+        <div class="boxe">    
+            <div id="body" class="input-container" style="width:400px;">
                 <p></p>
-            {% endif %}
-        </div> 
-        <a href=></a>
-            <button type="dash" class="dash" text-align="center"><!--Link to dashboard.html-->
-                <h4><a href="{{ url_for('views.chooseser') }}">Return To Services</a></h4>
-            </button>
-        </a>
+                <h3>Your Text Summary Results:</h3>
+                <h4> Your Text Summary </h4>
+                <p> {{ textsummary }} </p>
+            </div>
+        </div>
     </body>
 </html>

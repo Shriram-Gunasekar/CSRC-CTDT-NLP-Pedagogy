@@ -31,9 +31,9 @@ vectorizer = CountVectorizer(binary=True)
 
 views = Blueprint('views', __name__, url_defaults=None, root_path=None ) #template_folder not specified
 
-@views.route('/dashboard', methods=['GET','POST'])
+@views.route('/chooseser', methods=['GET','POST'])
 @login_required
-def dashboard():
+def chooseser():
     return render_template('chooseser.html')
 
 # Dashboard
@@ -48,8 +48,8 @@ def queries():
             print(i)
         answer = responses[scores.index(max(scores))]
         code = scores.index(max(scores))
-        return render_template('dashboard.html', user=current_user, response=answer, code=code)
-    return render_template('dashboard.html', user=current_user,response='', code='')
+        return render_template('queries.html', user=current_user, response=answer, code=code)
+    return render_template('querieshtml', user=current_user,response='', code='')
 
 # General Services
 @views.route('/evaluator', methods=['GET', 'POST'])
@@ -191,6 +191,13 @@ def qaentomology():
         answer = qaanswers(concept, question.split(';'))
         return render_template('qaentomology.html',user=current_user, answer=answer)
     return render_template('qaentomology.html', user=current_user, answer='')
+
+@views.route('/genques', methods=['GET', 'POST'])
+@login_required
+def genques():
+    if request.method == 'POST':
+        return render_template('genques.html', user=current_user)
+    return render_template('genques.html', user=current_user)
 
 #Model Methods     
 

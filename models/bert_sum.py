@@ -1,5 +1,3 @@
-import torch
-model = torch.load('Summarizer')
 data = '''The origin of the joints or segments in the limbs of arthropods 
 was probably due to the mechanical
 strains to which what were at first
@@ -41,5 +39,18 @@ is likewise so in the thoracic legs, where the number of tarsal joints
 varies from one to five; also in the cercopoda, the number of joints
 varying from one or two to twelve or more.
 '''
-answer = model(data,num_sentences=5,min_length=10)
-print(answer)
+
+import torch
+from flask import Flask, render_template, request
+model = torch.load('Summarizer')
+
+app = Flask(__name__)
+@app.route('/', methods=['GET','POST'])
+def demo():
+    if request.method == 'POST':
+        text = request.form.get('theirsumtext')
+        summary = model(text, num_sentences=5, min_length=10)
+        return render_template('bertsum.html', textsummary = summary)
+    return render_template('bertsum.html', summary = 'Summary will appear here')
+
+app.run(debug=True, host='0.0.0.0', port=8080)

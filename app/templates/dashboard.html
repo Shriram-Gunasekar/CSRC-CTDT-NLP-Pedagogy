@@ -151,8 +151,8 @@
                 <div class="title">Welcome to AltGPT</div>
                 <div class="sub_title">Your No.1 Pedagogical Chatbot</div>
                 <div class="btns">
-                <button>Learn More</button> <!--Link to aboutalt.html-->
-                <button>Queries</button> <!--Link to queries.html-->
+                <button><a href={{ url_for('sign.aboutalt')}}></a>Learn More</button> <!--Link to aboutalt.html-->
+                <button><a href="{{ url_For('views.queries') }}"></button> <!--Link to queries.html-->
             </div>
         </div>
     </body>

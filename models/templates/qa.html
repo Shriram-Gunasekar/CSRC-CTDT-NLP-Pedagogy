@@ -3,6 +3,21 @@
     <head>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+            * {
+                user-select: none;
+            }
+
+            *:focus {
+                outline: none;
+            }
+
+            html,
+            body {
+                height: 100%;
+                min-height: 100%;
+            }
+
             body {
                 font-family: "Lato", sans-serif;
                 padding-bottom: 100px;
@@ -17,14 +32,75 @@
                 align: center;
                 color:#ffffff;
             }
+            :root {
+                --select-border: #777;
+                --select-focus: #00f;
+                --select-arrow: var(--select-border);
+            }
+            select {
+                appearance: none;
+                background-color: transparent;
+                border: none;
+                padding: 0 1em 0 0;
+                margin: 0;
+                width: 100%;
+                font-family: inherit;
+                font-size: inherit;
+                cursor: inherit;
+                line-height: inherit;
+                z-index: 1;
+                outline: none;
+                text-align:center;
+            }
+            .select {
+                display: grid;
+                grid-template-areas: "select";
+                align-items: center;
+                position: relative;
+                min-width: 15ch;
+                max-width: 33ch;
+                border: 1px solid var(--select-border);
+                border-radius: 0.25em;
+                padding: 0.25em 0.5em;
+                font-size: 1.25rem;
+                cursor: pointer;
+                line-height: 1.1;
+                background-color: #fff;
+                background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+                position:relative;
+                top: 50%;
+                left: 9%;
+              }
+            .select select,
+            .select::after {
+                grid-area: select;
+            }
+            .select select:focus{ 
+                border:1px solid #e74c3c;
+                outline:none;	
+            }
             .box{
                 position:absolute;
-                left:50%;
-                top: 67%;
+                left:28%;
+                top: 70%;
                 transform: translate(-50%,-50%);
                 background-color: rgba(0, 0, 0, 0.85);
                 border-radius:5px;
-                padding:22px 150px;
+                padding:22px 100px;
+            }
+            .boxe{
+                position:absolute;
+                left: 75%;
+                top: 65%;
+                transform: translate(-50%,-50%);
+                background-color: rgba(0, 0, 0, 0.85);
+                border-radius:5px;
+                padding:200px 200px;
+            }
+            .center{
+                text-align: center;
+                font-size:60px;
+                top:10%;
             }
             .input-container{
                 position:relative;
@@ -57,12 +133,12 @@
                 color:#fff;
             }
             .input-container input:focus{ 
-                border:1px solid #FE7984;
+                border:1px solid #e74c3c;
                 outline:none;	
             }
             .btn{
                 color:#fff;
-                background-color:#FE7984;
+                background-color:#e74c3c;
                 outline: none;
                 border: 0;
                 color: #fff;
@@ -91,7 +167,7 @@
             }*/
             .btn:hover{
                 background-color:#fff;
-                color:#FE7984;
+                color:#e74c3c;
                 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
             }
             textarea{
@@ -122,12 +198,12 @@
             textarea:focus {
                 background: none repeat scroll 0 0 #1d1d1d2c;
                 outline-width: 0;
-                border:1px solid #FE7984;
+                border:1px solid #e74c3c;
                 outline:none;
             }
             .dash{
                 color:#fff;
-                background-color:#B44578;
+                background-color:#e74c3c;
                 outline: none;
                 border: 0;
                 color: #fff;
@@ -148,59 +224,34 @@
             }
             .dash:hover{
                 background-color:#fff;
-                color:#B44578;
+                color:#e74c3c;
                 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
             }
-            .center{
-                text-align: center;
-                font-size:60px;
-                top:10%;
-            }
         </style>
-        <title>CHATBOT</title>
         <meta charset="utf-8">
+        <title>Q&A Responses</title>
     </head>
     <body>
-        <h2 class="center"> CHATBOT </h2>
+        <h1> Queries & Answers </h1>
+        <h1> Answer : {{ answer }}</h1>
         <div class="box">
             <form action="" method="POST">
                 <div id="body" class="input-container" style="width:400px;">
+                    <label for="theirqatext"><h3 style="font-size:17px">Enter Your Data</h3></label>
                     <br>
-                    <textarea name="message" rows="1" cols="46" id="message" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
-                    <br>
-                    <label for="message"><h3 style="font-size:18px;text-align:center">Drop your message here</h3></label> 
+                    <textarea rows="5" cols="46" id="theirqatext" name="theirqatext" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
                 </div>
                 <div id="body" class="input-container" style="width:400px;">
-                    <p></p><button type="submit" class="btn" text-align="center">Submit</button>
+                    <br>
+                    <textarea name="theirqas" rows="5" cols="46" id="theirqas" name="theirqatext" required="" wrap="off" autocomplete="off" aria-autocomplete="list" aria-haspopup="true"></textarea>
+                    <br>
+                    <label for="theirqas"><h3 style="font-size:18px;text-align:center">Enter your queries separated by semicolons</h3></label> 
                 </div>
+                <div id="body" class="input-container" style="width:400px;">
+                    <p></p>
+                    <button type="submit" class="btn" text-align="center">Submit</button>
+                </div>           
             </form>
-            <h2 style="text-align:center"> ALTGPT Response </h2>
-            <p>Here is the response</p>
-            <p> {{ response }} </p>
-            {% if code == 4 %}
-                <a href="{{ url_for('views.pdfsum') }}">File Summarizer</a>
-            {% elif code == 5 %}
-                <a href="{{ url_for('views.bertsum') }}">Text Summarizer</a>
-            {% elif code == 7 %}
-                <a href="{{ url_for('views.plagsim') }}">Text Similarity</a>
-            {% elif code == 6 %}
-                <a href="{{ url_for('views.pdfsim') }}">File Similarity</a>
-            {% elif code == 9 %}
-            <a href="{{ url_for('views.qa') }}">Text Q&A</a>
-            {% elif code == 8 %}
-                <a href="{{ url_for('views.pdfqa') }}">File Q&A</a>
-            {% elif code == 10 %}
-                <a href="{{ url_for('views.qaentomology') }}">Entomology</a>
-            {% elif code == 13 %}
-                <a href="{{ url_for('views.machining') }}">Machining</a>
-            {% else %}
-                <p></p>
-            {% endif %}
-        </div> 
-        <a href=></a>
-            <button type="dash" class="dash" text-align="center"><!--Link to dashboard.html-->
-                <h4><a href="{{ url_for('views.chooseser') }}">Return To Services</a></h4>
-            </button>
-        </a>
+        </div>            
     </body>
 </html>
