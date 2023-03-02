@@ -1,5 +1,7 @@
-#Credits
-CSRC (Centre For Sponsored Research And Consultancy)/CTDT (Centre For Technology Development And Transfer) of Anna University sanctioned this project to be developed from July 2022 - December 2022. 
+# Credits
+
+#### CSRC (Centre For Sponsored Research And Consultancy)/CTDT (Centre For Technology Development And Transfer) of Anna University sanctioned this project to be developed from July 2022 - December 2022. 
+
 It was reviewed by the expert evaluation committee and approved on National Science Day, Feb 28, 2023 in Anna University, Chennai.
 
 This project is a web app that offers a variety of NLP (Natural Language Processing) services in the context of developing a pedagogical tool for solely academic purposes, bound by F.A.T.E. principles.
