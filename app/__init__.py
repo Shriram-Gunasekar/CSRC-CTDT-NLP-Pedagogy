@@ -23,9 +23,8 @@ def constructor():
     config(app)    
     blueprint(app)    
     
-    if os.path.exists('app/' + 'tracker.db') == False:
-        db.create_all(app=app)
-        print('DB Created')
+    with app.app_context():
+        db.create_all()
     
     login_det(app)    
     
